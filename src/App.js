@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Header from './Header';
 import Menu from './Menu';
 import Search from './Search';
+import markers from './markers';
 
 export default class App extends Component {
   state = {
@@ -84,7 +85,7 @@ export default class App extends Component {
               coordinate={{
                 latitude: store.latLng.lat,
                 longitude: store.latLng.lng,
-              }} image={require('../images/marker1.png')}
+              }} image={markers[this.props.currentTheme]}
               onPress={ () => this.props.onOpenStore(store) } />
           )
         }

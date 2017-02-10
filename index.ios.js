@@ -24,8 +24,13 @@ export default class EthnicGroceryStores extends Component {
     storeTypes: [],
     currentStore: null,
     user: { email: '' },
-    styles: getStyles('mainTheme')
+    currentTheme: 'lavenderField',
+    styles: {}
   };
+
+  componentWillMount() {
+    this.setState({ styles: getStyles(this.state.currentTheme) });
+  }
 
   componentDidMount() {
     loadStoreTypes(storeTypes => this.setState({ storeTypes }));
@@ -47,7 +52,7 @@ export default class EthnicGroceryStores extends Component {
 
       case 'Store':
         sceneToRender = <Store styles={this.state.styles} navigator={navigator}
-          store={this.state.currentStore} />;
+          store={this.state.currentStore} currentTheme={this.state.currentTheme} />;
         break;
 
       default:

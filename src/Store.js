@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import MapView from 'react-native-maps';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from './Header';
+import markers from './markers';
 
 const fields = [
   'Mapview',
@@ -49,7 +50,7 @@ export default class Search extends Component {
                 <MapView.Marker coordinate={{
                   latitude: lat,
                   longitude: lng,
-                }} image={require('../images/marker1.png')} />
+                }} image={markers[this.props.currentTheme]} />
               </MapView>;
               break;
 
