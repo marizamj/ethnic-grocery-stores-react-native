@@ -41,6 +41,7 @@
 		520C7EDD1E4A1F2D00A3FC4D /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 520C7ED71E4A1F2D00A3FC4D /* Roboto-Regular.ttf */; };
 		520C7EDE1E4A1F2D00A3FC4D /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 520C7ED81E4A1F2D00A3FC4D /* Roboto-Thin.ttf */; };
 		520C7EE01E4A79C400A3FC4D /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 520C7EDF1E4A79C400A3FC4D /* EvilIcons.ttf */; };
+		5257EA591E4E21030022A150 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5257EA3E1E4E1FC00022A150 /* Ionicons.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		DDEED85E8A2F46FF8AA681DD /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAE7F79ABEC435F92DAECFC /* libAirMaps.a */; };
@@ -275,6 +276,7 @@
 		520C7ED71E4A1F2D00A3FC4D /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../../../Downloads/roboto/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		520C7ED81E4A1F2D00A3FC4D /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Thin.ttf"; path = "../../../../Downloads/roboto/Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		520C7EDF1E4A79C400A3FC4D /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		5257EA3E1E4E1FC00022A150 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7FAE7F79ABEC435F92DAECFC /* libAirMaps.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAirMaps.a; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				520C7EDF1E4A79C400A3FC4D /* EvilIcons.ttf */,
+				5257EA3E1E4E1FC00022A150 /* Ionicons.ttf */,
 				520C7ED31E4A1F2D00A3FC4D /* Roboto-Black.ttf */,
 				520C7ED41E4A1F2D00A3FC4D /* Roboto-Bold.ttf */,
 				520C7ED51E4A1F2D00A3FC4D /* Roboto-Light.ttf */,
@@ -904,6 +907,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5257EA591E4E21030022A150 /* Ionicons.ttf in Resources */,
 				520C7EDE1E4A1F2D00A3FC4D /* Roboto-Thin.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				520C7EDD1E4A1F2D00A3FC4D /* Roboto-Regular.ttf in Resources */,

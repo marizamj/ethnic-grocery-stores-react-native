@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  TouchableHighlight,
-} from 'react-native';
-
-import Icon from 'react-native-vector-icons/EvilIcons';
-
-import stylesObj from './styles';
+import { StyleSheet, Text, View, ScrollView, TouchableHighlight } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class Menu extends Component {
-  state={
+  state = {
     user: this.props.user
   }
 
   render() {
+    const styles = StyleSheet.create(this.props.styles);
+
     return <View style={styles.menu}>
       <ScrollView>
       {
@@ -26,24 +19,27 @@ export default class Menu extends Component {
           </View>
           :
           <View style={styles.signIn}>
-            <Icon name="user" style={styles.signInIcon} />
+            <Icon name="ios-contact-outline" style={styles.signInIcon} />
             <Text style={styles.signInText}>Sign in</Text>
           </View>
       }
 
       {
         [
-          { title: 'About', icon: 'question', onPress: () => {
+          { title: 'About', icon: 'ios-help-circle-outline', onPress: () => {
             this.props.onAbout();
           }},
-          { title: 'Add store', icon: 'plus', onPress: () => {
+          { title: 'Add store', icon: 'ios-add-circle-outline', onPress: () => {
 
           }},
-          { title: 'Share', icon: 'share-apple', onPress: () => {
+          { title: 'Share', icon: 'ios-share-outline', onPress: () => {
+
+          }},
+          { title: 'Settings', icon: 'ios-settings-outline', onPress: () => {
 
           }}
-        ].map(el =>
-          <TouchableHighlight key={el.title} underlayColor="white"
+        ].map( el =>
+          <TouchableHighlight key={el.title} underlayColor="transparent"
             style={styles.menuListItem} onPress={el.onPress}>
             <View style={[styles.flexRow, styles.flexOne]}>
               <Icon name={el.icon} style={styles.menuListItemIcon}>
@@ -57,5 +53,3 @@ export default class Menu extends Component {
     </View>
   }
 }
-
-const styles = StyleSheet.create(stylesObj);

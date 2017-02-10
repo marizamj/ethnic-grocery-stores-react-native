@@ -1,38 +1,24 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Animated, Easing } from 'react-native';
 import MapView from 'react-native-maps';
-import Icon from 'react-native-vector-icons/EvilIcons';
-
+import Icon from 'react-native-vector-icons/Ionicons';
 import Header from './Header';
 import Menu from './Menu';
 import Search from './Search';
-import stylesObj from './styles';
-
-import { loadStoreTypes, authListener, loadStores } from './helpers/firebaseLoaders';
-
-const opposite = bin => bin === 0 ? 1 : 0;
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    menu: false,
+    stores: this.props.stores,
+    storesToShow: this.props.storesToShow,
+    storeTypes: this.props.storeTypes,
+    user: this.props.user,
+  };
 
-    this.state = {
-      menu: !true,
-      search: false,
-      stores: [],
-      storesToShow: [],
-      storeTypes: [],
-      user: { email: '' },
-      token: null,
-    };
+  animatedValue = new Animated.Value(this.state.menu ? 1 : 0);
 
-    this.animatedValue = new Animated.Value(this.state.menu ? 1 : 0);
-  }
-
-  componentDidMount() {
-    loadStoreTypes(storeTypes => this.setState({ storeTypes }));
-    authListener(user => this.setState({ user }));
-    loadStores(stores => this.setState({ stores, storesToShow: stores }));
+  componentWillReceiveProps({ stores, storesToShow, storeTypes, user }) {
+    this.setState({ stores, storesToShow, storeTypes, user });
   }
 
   componentWillUpdate(_, nextState) {
@@ -53,23 +39,24 @@ export default class App extends Component {
   };
 
   render() {
+    const styles = StyleSheet.create(this.props.styles);
+
     const width = this.animatedValue.interpolate({
       inputRange: [ 0, 1 ],
       outputRange: [ 0, 250 ]
     });
 
     return <View style={styles.flexOne}>
-      <Header>
+      <Header styles={this.props.styles}>
         <Icon onPress={() => this.setState({ menu: !this.state.menu })}
-          style={[ styles.headerIcon, { width: 45 } ]} name="navicon" />
+          style={styles.headerIcon} name="ios-menu" />
         <View>
           <Text style={styles.headerText}>
-            All stores
-            <Icon color="white" size={20} name="chevron-down" />
+            All stores <Icon color="white" size={15} name="ios-arrow-down" />
           </Text>
         </View>
         <Icon onPress={() => this.props.navigator.push({ title: 'Search' })}
-          style={styles.headerIcon} name="search" />
+          style={styles.headerIcon} name="ios-search" />
       </Header>
 
       <MapView style={[ styles.flexOne, styles.flexRow ]}
@@ -84,13 +71,12 @@ export default class App extends Component {
         }}>
 
         <Animated.View style={{ width }}>
-          <Menu user={this.state.user}
+          <Menu styles={this.props.styles} user={this.state.user}
             onAbout={() => {
               this.setState({ menu: false });
               this.props.navigator.push({ title: 'About' });
             }} />
         </Animated.View>
-
 
         {
           this.state.stores.map(store =>
@@ -98,8 +84,8 @@ export default class App extends Component {
               coordinate={{
                 latitude: store.latLng.lat,
                 longitude: store.latLng.lng,
-              }} image={require('../images/marker1.png')}>
-            </MapView.Marker>
+              }} image={require('../images/marker1.png')}
+              onPress={ () => this.props.onOpenStore(store) } />
           )
         }
 
@@ -108,5 +94,3 @@ export default class App extends Component {
     </View>
   }
 }
-
-const styles = StyleSheet.create(stylesObj);

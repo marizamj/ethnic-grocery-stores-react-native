@@ -1,120 +1,187 @@
-export default {
-  flexOne: {
-    flex: 1,
-  },
+// import { StyleSheet } from 'react-native';
+import themes from './themes';
 
-  flexRow: {
-    flexDirection: 'row'
-  },
+export default function getStyles(theme) {
+  const currentTheme = themes[theme];
 
-  header: {
-    height: 70,
-    paddingTop: 23,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: 'lightcoral',
-  },
+  return ({
+    flexOne: {
+      flex: 1,
+    },
 
-  headerIcon: {
-    color: 'white',
-    fontSize: 30,
-    marginTop: 8,
-    marginHorizontal: 13,
-  },
+    flexRow: {
+      flexDirection: 'row'
+    },
 
-  headerText: {
-    fontFamily: 'Roboto-Medium',
-    fontSize: 20,
-    textAlign: 'center',
-    marginTop: 10,
-    color: 'white',
-  },
+    primaryBackground: {
+      backgroundColor: currentTheme.primaryLight,
+    },
 
-  menu: {
-    flex: 1,
-    backgroundColor: 'white',
-    shadowColor: 'slategrey',
-    shadowOffset: { width: 0, height: 0 },
-    shadowRadius: 200,
-    shadowOpacity: 1
-  },
+    header: {
+      backgroundColor: currentTheme.primaryDark,
+      height: 70,
+      paddingTop: 23,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
 
-  signIn: {
-    height: 75,
-    backgroundColor: 'darkcyan',
-    flexDirection: 'row'
-  },
+    headerIcon: {
+      color: currentTheme.primaryLight,
+      fontSize: 30,
+      marginTop: 8,
+      width: 45,
+      textAlign: 'center'
+    },
 
-  signInIcon: {
-    marginLeft: 10,
-    color: 'white',
-    fontSize: 50,
-    height: 55,
-    width: 45,
-    lineHeight: 75
-  },
+    headerText: {
+      color: currentTheme.primaryLight,
+      fontFamily: 'Roboto-Medium',
+      fontSize: 20,
+      textAlign: 'center',
+      marginTop: 10,
+    },
 
-  signInText: {
-    marginLeft: 10,
-    color: 'white',
-    lineHeight: 75,
-    fontSize: 20,
-  },
+    iconPlaceholder: {
+      width: 45
+    },
 
-  user: {
-    height: 75
-  },
+    menu: {
+      backgroundColor: currentTheme.primaryLight,
+      flex: 1,
+      shadowColor: 'slategrey',
+      shadowOffset: { width: 0, height: 0 },
+      shadowRadius: 200,
+      shadowOpacity: 1
+    },
 
-  menuListItem: {
-    height: 75,
-    // borderBottomColor: 'lightgrey',
-    // borderStyle: 'solid',
-    // borderBottomWidth: 1
-  },
+    signIn: {
+      backgroundColor: currentTheme.additionalDark,
+      height: 75,
+      flexDirection: 'row'
+    },
 
-  menuListItemIcon: {
-    marginLeft: 15,
-    fontSize: 40,
-    lineHeight: 75,
-    color: 'dimgrey',
-  },
+    signInIcon: {
+      color: currentTheme.primaryLight,
+      marginLeft: 10,
+      fontSize: 50,
+      height: 60,
+      width: 45,
+      lineHeight: 75
+    },
 
-  menuListItemText: {
-    marginLeft: 10,
-    fontSize: 20,
-    lineHeight: 75,
-    color: 'dimgrey',
-  },
+    signInText: {
+      color: currentTheme.primaryLight,
+      marginLeft: 10,
+      lineHeight: 75,
+      fontSize: 20,
+    },
 
-  search: {
-    height: 50,
-    marginVertical: 15,
-    marginHorizontal: 20,
-    paddingHorizontal: 20,
-    fontSize: 20,
-    borderStyle: 'solid',
-    borderColor: 'lightgray',
-    borderWidth: 1
-  },
+    user: {
+      height: 75
+    },
 
-  searchResultsItem: {
-    height: 50,
-    marginHorizontal: 20,
-    borderStyle: 'solid',
-    borderColor: 'lightgray',
-    borderTopColor: 'transparent',
-    borderWidth: 1
-  },
+    menuListItem: {
+      height: 75,
+      // borderBottomColor: 'lightgrey',
+      // borderStyle: 'solid',
+      // borderBottomWidth: 1
+    },
 
-  firstItem: {
-    borderTopColor: 'lightgray'
-  },
+    menuListItemIcon: {
+      color: currentTheme.textLighter,
+      marginLeft: 15,
+      fontSize: 35,
+      lineHeight: 75,
+      width: 30,
+      textAlign: 'center',
+    },
 
-  p: {
-    fontFamily: 'Roboto-Light',
-    fontSize: 20,
-    textAlign: 'center',
-    marginTop: 15,
-    marginHorizontal: 15,
-  },
-};
+    menuListItemText: {
+      color: currentTheme.textLighter,
+      marginLeft: 10,
+      fontSize: 20,
+      lineHeight: 75,
+    },
+
+    search: {
+      borderColor: currentTheme.borders,
+      height: 50,
+      marginVertical: 15,
+      marginHorizontal: 20,
+      paddingHorizontal: 20,
+      fontSize: 20,
+      borderStyle: 'solid',
+      borderWidth: 1
+    },
+
+    searchResultsItem: {
+      borderColor: currentTheme.borders,
+      height: 50,
+      marginHorizontal: 20,
+      borderStyle: 'solid',
+      borderTopColor: 'transparent',
+      borderWidth: 1
+    },
+
+    firstItem: {
+      borderTopColor: currentTheme.borders
+    },
+
+    storeField: {
+      // height: 75,
+    },
+
+    storeMap: {
+      height: 150
+    },
+
+    storeType: {
+      color: currentTheme.primaryLight,
+      backgroundColor: currentTheme.additionalLight,
+      fontSize: 20,
+      textAlign: 'center',
+      padding: 5
+    },
+
+    storeQuickContacts: {
+      backgroundColor: currentTheme.additionalDark,
+      height: 60,
+      flexDirection: 'row',
+      justifyContent: 'space-around'
+    },
+
+    storeQuickContactsIcon : {
+      color: currentTheme.primaryLight,
+      fontSize: 40,
+      lineHeight: 60,
+    },
+
+    storeFieldTitle: {
+      color: currentTheme.additionalDark,
+      fontSize: 18,
+      padding: 10
+    },
+
+    storeFieldText: {
+      color: currentTheme.textDarker,
+      fontSize: 22,
+      padding: 5,
+      paddingLeft: 40
+    },
+
+    aboutIcons: {
+      color: currentTheme.textLighter,
+      fontSize: 40,
+      marginHorizontal: 10
+    },
+
+    p: {
+      color: currentTheme.textDarker,
+      fontFamily: 'Roboto-Light',
+      fontSize: 20,
+      textAlign: 'center',
+      marginTop: 15,
+      marginHorizontal: 15,
+    }
+  });
+}

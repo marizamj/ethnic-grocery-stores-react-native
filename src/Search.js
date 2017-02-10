@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TextInput, ScrollView } from 'react-native';
-import Icon from 'react-native-vector-icons/EvilIcons';
-
+import Icon from 'react-native-vector-icons/Ionicons';
 import Header from './Header';
-import stylesObj from './styles';
 
 export default class Search extends Component {
   render() {
-    return <View style={[ styles.flexOne, { backgroundColor: 'white' } ]}>
-      <Header>
-        <Icon style={[styles.headerIcon, { marginLeft: 0, fontSize: 35 }]}
-          name="chevron-left" onPress={() => this.props.navigator.pop()} />
+    const styles = StyleSheet.create(this.props.styles);
+
+    return <View style={[ styles.flexOne, styles.primaryBackground ]}>
+      <Header styles={this.props.styles}>
+        <Icon style={styles.headerIcon}
+          name="ios-arrow-back" onPress={() => this.props.navigator.pop()} />
         <Text style={styles.headerText}>
           Search
         </Text>
-        <View style={{ width: 35 }} />
+        <View style={styles.iconPlaceholder} />
       </Header>
 
       <TextInput style={styles.search} placeholder="Search.." />
@@ -28,5 +28,3 @@ export default class Search extends Component {
     </View>
   }
 }
-
-const styles = StyleSheet.create(stylesObj);

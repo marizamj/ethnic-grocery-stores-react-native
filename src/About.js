@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import Icon from 'react-native-vector-icons/EvilIcons';
-
+import Icon from 'react-native-vector-icons/Ionicons';
 import Header from './Header';
-import stylesObj from './styles'
 
 export default class About extends Component {
   render() {
-    return <View style={[ styles.flexOne, { backgroundColor: 'white' } ]}>
-      <Header>
-        <Icon style={[styles.headerIcon, { marginLeft: 0, fontSize: 35 }]}
-          name="chevron-left" onPress={() => this.props.navigator.pop()} />
+    const styles = StyleSheet.create(this.props.styles);
+
+    return <View style={[ styles.flexOne, styles.primaryBackground ]}>
+      <Header styles={this.props.styles}>
+        <Icon style={styles.headerIcon}
+          name="ios-arrow-back" onPress={() => this.props.navigator.pop()} />
         <Text style={styles.headerText}>
           About this project
         </Text>
-        <View style={{ width: 35 }} />
+        <View style={styles.iconPlaceholder} />
       </Header>
 
       <Text style={styles.p}>
@@ -35,13 +35,11 @@ export default class About extends Component {
         Github page.
       </Text>
       <View style={[styles.flexRow, { marginTop: 30, justifyContent: 'center' }]}>
-        <Icon size={50} name="sc-facebook" />
-        <Icon size={50} name="sc-github" />
-        <Icon size={50} name="sc-linkedin" />
-        <Icon size={50} name="envelope" />
+        <Icon style={styles.aboutIcons} name="logo-facebook" />
+        <Icon style={styles.aboutIcons} name="logo-github" />
+        <Icon style={styles.aboutIcons} name="logo-linkedin" />
+        <Icon style={styles.aboutIcons} name="ios-mail" />
       </View>
     </View>
   }
 };
-
-const styles = StyleSheet.create(stylesObj);
