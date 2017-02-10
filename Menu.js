@@ -5,28 +5,55 @@ import {
   View,
   ScrollView,
   TouchableHighlight,
-  TouchableWithoutFeedback
 } from 'react-native';
+
+import Icon from 'react-native-vector-icons/EvilIcons';
 
 import stylesObj from './styles';
 
 export default class Menu extends Component {
-  componentDidMount() {
-    console.log(this.props.onClose);
+  state={
+    user: this.props.user
   }
 
   render() {
-    return <View style={{ flex: 1, flexDirection: 'row' }}>
-      <View style={styles.menu}>
-        <ScrollView style={styles.menuList}>
-            <TouchableHighlight underlayColor="#e6eefd" style={styles.menuListItem} onPress={() => {  }}>
-              <Text style={styles.menuListItemText}>About</Text>
-            </TouchableHighlight>
-        </ScrollView>
-      </View>
-      <TouchableWithoutFeedback onPress={() => this.props.onClose()}>
-        <View style={styles.flexOne} />
-      </TouchableWithoutFeedback>
+    return <View style={styles.menu}>
+      <ScrollView>
+      {
+        this.state.user.email ?
+          <View style={styles.user}>
+
+          </View>
+          :
+          <View style={styles.signIn}>
+            <Icon name="user" style={styles.signInIcon} />
+            <Text style={styles.signInText}>Sign in</Text>
+          </View>
+      }
+
+      {
+        [
+          { title: 'About', icon: 'question', onPress: () => {
+            this.props.onAbout();
+          }},
+          { title: 'Add store', icon: 'plus', onPress: () => {
+
+          }},
+          { title: 'Share', icon: 'share-apple', onPress: () => {
+
+          }}
+        ].map(el =>
+          <TouchableHighlight key={el.title} underlayColor="white"
+            style={styles.menuListItem} onPress={el.onPress}>
+            <View style={[styles.flexRow, styles.flexOne]}>
+              <Icon name={el.icon} style={styles.menuListItemIcon}>
+              </Icon>
+              <Text style={styles.menuListItemText}>{el.title}</Text>
+            </View>
+          </TouchableHighlight>)
+      }
+
+      </ScrollView>
     </View>
   }
 }

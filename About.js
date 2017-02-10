@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, Button } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/EvilIcons';
 
 import Header from './Header';
 import stylesObj from './styles'
 
 export default class About extends Component {
-  onGoBack() {
-
-  }
-
   render() {
-    return <View style={styles.flexOne}>
+    return <View style={[ styles.flexOne, { backgroundColor: 'white' } ]}>
       <Header>
+        <Icon style={[styles.headerIcon, { marginLeft: 0, fontSize: 35 }]}
+          name="chevron-left" onPress={() => this.props.navigator.pop()} />
         <Text style={styles.headerText}>
           About this project
         </Text>
+        <View style={{ width: 35 }} />
       </Header>
 
       <Text style={styles.p}>
@@ -30,12 +30,15 @@ export default class About extends Component {
       </Text>
       <Text style={styles.p}>
         I created this project while learning how to code.
-        It is using React to render the UI and Firebase to
+        It is powered by React Native and uses Firebase to
         store data. You also can find (and star ★) it on my
         Github page.
       </Text>
-      <View style={styles.btn}>
-        <Button color="#f37e7f" onPress={this.onGoBack} title="← Back" />
+      <View style={[styles.flexRow, { marginTop: 30, justifyContent: 'center' }]}>
+        <Icon size={50} name="sc-facebook" />
+        <Icon size={50} name="sc-github" />
+        <Icon size={50} name="sc-linkedin" />
+        <Icon size={50} name="envelope" />
       </View>
     </View>
   }

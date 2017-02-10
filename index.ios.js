@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { AppRegistry, Navigator } from 'react-native';
 import App from './App';
 import About from './About';
+import Search from './Search';
 
 import firebase from 'firebase';
 
@@ -18,9 +19,9 @@ export default class EthnicGroceryStores extends Component {
     let sceneToRender;
 
     switch (route.title) {
-      // case 'Start':
-      //   sceneToRender = <About navigator={navigator} />;
-      //   break;
+      case 'Search':
+        sceneToRender = <Search navigator={navigator} />;
+        break;
 
       case 'About':
         sceneToRender = <About navigator={navigator} />;

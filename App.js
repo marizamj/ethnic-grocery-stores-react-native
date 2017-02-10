@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TextInput, Animated, Easing } from 'react-native';
+import { StyleSheet, View, Text, Animated, Easing } from 'react-native';
 import MapView from 'react-native-maps';
 import Icon from 'react-native-vector-icons/EvilIcons';
 
@@ -30,12 +30,12 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    loadStores(stores => this.setState({ stores, storesToShow: stores }));
     loadStoreTypes(storeTypes => this.setState({ storeTypes }));
     authListener(user => this.setState({ user }));
+    loadStores(stores => this.setState({ stores, storesToShow: stores }));
   }
 
-  componentWillUpdate(nextProps, nextState) {
+  componentWillUpdate(_, nextState) {
     if (nextState.menu !== this.state.menu) {
       this.toggleMenu();
     }
@@ -52,47 +52,43 @@ export default class App extends Component {
     ).start();
   };
 
-  changeFilter = () => {
-
-  };
-
-  openSearch = () => {
-
-  };
-
   render() {
-    const marginLeft = this.animatedValue.interpolate({
+    const width = this.animatedValue.interpolate({
       inputRange: [ 0, 1 ],
-      outputRange: [ -500, 0 ]
+      outputRange: [ 0, 250 ]
     });
 
     return <View style={styles.flexOne}>
       <Header>
         <Icon onPress={() => this.setState({ menu: !this.state.menu })}
-          style={styles.headerIcon} name="navicon" />
-        <View onAccessibilityTap={this.changeFilter}>
+          style={[ styles.headerIcon, { width: 45 } ]} name="navicon" />
+        <View>
           <Text style={styles.headerText}>
             All stores
-            <Icon color="oldlace" size={20} name="chevron-down" />
+            <Icon color="white" size={20} name="chevron-down" />
           </Text>
         </View>
-        <Icon onPress={this.openSearch}
+        <Icon onPress={() => this.props.navigator.push({ title: 'Search' })}
           style={styles.headerIcon} name="search" />
       </Header>
 
-      <MapView style={styles.flexOne}
-        initialRegion={{
+      <MapView style={[ styles.flexOne, styles.flexRow ]}
+        onStartShouldSetResponder={ e => {
+          if (this.state.menu && e.nativeEvent.locationX > 250)
+            this.setState({ menu: false });
+        }} initialRegion={{
           latitude: 52.366017,
           longitude: 4.893490,
           latitudeDelta: 0.05,
           longitudeDelta: 0.05
         }}>
 
-
-        <Animated.View style={{ marginLeft, flex: 1 }}>
-          <Menu onClose={() => {
-            if (this.state.menu) this.setState({ menu: false });
-          }} />
+        <Animated.View style={{ width }}>
+          <Menu user={this.state.user}
+            onAbout={() => {
+              this.setState({ menu: false });
+              this.props.navigator.push({ title: 'About' });
+            }} />
         </Animated.View>
 
 
@@ -102,8 +98,7 @@ export default class App extends Component {
               coordinate={{
                 latitude: store.latLng.lat,
                 longitude: store.latLng.lng,
-              }}>
-              <Icon name="location" size={50} />
+              }} image={require('./images/marker1.png')}>
             </MapView.Marker>
           )
         }
