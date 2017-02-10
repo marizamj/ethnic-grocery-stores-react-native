@@ -98,7 +98,7 @@ export default class App extends Component {
               coordinate={{
                 latitude: store.latLng.lat,
                 longitude: store.latLng.lng,
-              }} image={require('./images/marker1.png')}>
+              }} image={require('../images/marker1.png')}>
             </MapView.Marker>
           )
         }

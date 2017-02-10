@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { AppRegistry, Navigator } from 'react-native';
-import App from './App';
-import About from './About';
-import Search from './Search';
+import App from './src/App';
+import About from './src/About';
+import Search from './src/Search';
 
 import firebase from 'firebase';
 
