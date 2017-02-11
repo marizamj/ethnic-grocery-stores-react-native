@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, TextInput, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from './Header';
+import SvgMarker from './SvgMarker';
 
 export default class Search extends Component {
   render() {
@@ -24,6 +25,7 @@ export default class Search extends Component {
         <View style={styles.searchResultsItem}></View>
         <View style={styles.searchResultsItem}></View>
       </ScrollView>
+
 
     </View>
   }

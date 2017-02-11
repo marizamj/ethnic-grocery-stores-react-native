@@ -3,7 +3,8 @@ import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import MapView from 'react-native-maps';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from './Header';
-import markers from './styles/markers';
+import SvgMarker from './SvgMarker';
+import themes from './styles/themes';
 
 const fields = [
   'Mapview',
@@ -18,14 +19,14 @@ const fields = [
 
 export default class Search extends Component {
   render() {
-    const { store } = this.props;
+    const { store, currentTheme, navigator } = this.props;
     const { lat, lng } = store.latLng;
     const styles = StyleSheet.create(this.props.styles);
 
     return <View style={[ styles.flexOne, styles.primaryBackground ]}>
-      <Header currentTheme={this.props.currentTheme} styles={this.props.styles}>
+      <Header currentTheme={currentTheme} styles={this.props.styles}>
         <Icon style={styles.headerIcon}
-          name="ios-arrow-back" onPress={() => this.props.navigator.pop()} />
+          name="ios-arrow-back" onPress={() => navigator.pop()} />
         <Text style={styles.headerText}>
           { store.title }
         </Text>
@@ -50,7 +51,11 @@ export default class Search extends Component {
                 <MapView.Marker coordinate={{
                   latitude: lat,
                   longitude: lng,
-                }} image={markers[this.props.currentTheme]} />
+                }}>
+                  <SvgMarker scale={0.3}
+                    baseColor={themes[currentTheme].markerFirst}
+                    additionalColor={themes[currentTheme].markerSecond} />
+                </MapView.Marker>
               </MapView>;
               break;
 

@@ -5,7 +5,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Header from './Header';
 import Menu from './Menu';
 import Search from './Search';
-import markers from './styles/markers';
+import SvgMarker from './SvgMarker';
+import themes from './styles/themes';
 
 export default class App extends Component {
   state = {
@@ -46,6 +47,7 @@ export default class App extends Component {
 
   render() {
     const styles = StyleSheet.create(this.props.styles);
+    const { currentTheme, navigator } = this.props;
 
     const width = this.animatedValue.interpolate({
       inputRange: [ 0, 1 ],
@@ -53,7 +55,7 @@ export default class App extends Component {
     });
 
     return <View style={styles.flexOne}>
-      <Header currentTheme={this.props.currentTheme} styles={this.props.styles}>
+      <Header currentTheme={currentTheme} styles={this.props.styles}>
         <Icon onPress={() => this.setState({ menu: !this.state.menu })}
           style={styles.headerIcon} name="ios-menu" />
         <View>
@@ -61,7 +63,7 @@ export default class App extends Component {
             All stores <Icon style={styles.headerDropdownIcon} name="ios-arrow-down" />
           </Text>
         </View>
-        <Icon onPress={() => this.props.navigator.push({ title: 'Search' })}
+        <Icon onPress={() => navigator.push({ title: 'Search' })}
           style={styles.headerIcon} name="ios-search" />
       </Header>
 
@@ -79,11 +81,15 @@ export default class App extends Component {
         {
           this.state.stores.map(store =>
             <MapView.Marker key={store.id}
+              style={{ marginTop: 200 }}
               coordinate={{
                 latitude: store.latLng.lat,
                 longitude: store.latLng.lng,
-              }} image={markers[this.props.currentTheme]}
-              onPress={ () => this.props.onOpenStore(store) } />
+              }} onStartShouldSetResponder={ () => this.props.onOpenStore(store) }>
+              <SvgMarker scale={0.3}
+                baseColor={themes[currentTheme].markerFirst}
+                additionalColor={themes[currentTheme].markerSecond} />
+            </MapView.Marker>
           )
         }
 
@@ -99,3 +105,5 @@ export default class App extends Component {
     </View>
   }
 }
+
+// image={markers[this.props.currentTheme]}
