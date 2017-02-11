@@ -1,4 +1,3 @@
-// import { StyleSheet } from 'react-native';
 import themes from './themes';
 
 export default function getStyles(theme) {
@@ -33,9 +32,14 @@ export default function getStyles(theme) {
       textAlign: 'center'
     },
 
+    headerDropdownIcon: {
+      fontSize: 15,
+      color: currentTheme.primaryLight,
+    },
+
     headerText: {
       color: currentTheme.primaryLight,
-      fontFamily: 'Roboto-Medium',
+      // fontFamily: 'Roboto-Medium',
       fontSize: 20,
       textAlign: 'center',
       marginTop: 10,
@@ -82,9 +86,6 @@ export default function getStyles(theme) {
 
     menuListItem: {
       height: 75,
-      // borderBottomColor: 'lightgrey',
-      // borderStyle: 'solid',
-      // borderBottomWidth: 1
     },
 
     menuListItemIcon: {
@@ -125,10 +126,6 @@ export default function getStyles(theme) {
 
     firstItem: {
       borderTopColor: currentTheme.borders
-    },
-
-    storeField: {
-      // height: 75,
     },
 
     storeMap: {
@@ -175,9 +172,42 @@ export default function getStyles(theme) {
       marginHorizontal: 10
     },
 
+    settingsTitle: {
+      color: currentTheme.primaryLight,
+      backgroundColor: currentTheme.additionalLight,
+      fontSize: 20,
+      textAlign: 'center',
+      padding: 5
+    },
+
+    settingsItem: {
+      height: 125,
+      flexDirection: 'row'
+    },
+
+    settingsItemText: {
+      fontSize: 25,
+      paddingHorizontal: 10,
+      fontWeight: '300',
+      paddingVertical: 7,
+    },
+
+    settingsItemTextContainer: {
+      height: 45,
+      marginTop: 80,
+      width: 270
+    },
+
+    settingsItemImage: {
+      height: 200,
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'flex-end'
+    },
+
     p: {
       color: currentTheme.textDarker,
-      fontFamily: 'Roboto-Light',
+      fontWeight: '300',
       fontSize: 20,
       textAlign: 'center',
       marginTop: 15,

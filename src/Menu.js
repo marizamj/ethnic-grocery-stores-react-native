@@ -36,7 +36,7 @@ export default class Menu extends Component {
 
           }},
           { title: 'Settings', icon: 'ios-settings-outline', onPress: () => {
-
+            this.props.onSettings();
           }}
         ].map( el =>
           <TouchableHighlight key={el.title} underlayColor="transparent"

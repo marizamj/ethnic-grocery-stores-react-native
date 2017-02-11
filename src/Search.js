@@ -8,7 +8,7 @@ export default class Search extends Component {
     const styles = StyleSheet.create(this.props.styles);
 
     return <View style={[ styles.flexOne, styles.primaryBackground ]}>
-      <Header styles={this.props.styles}>
+      <Header currentTheme={this.props.currentTheme} styles={this.props.styles}>
         <Icon style={styles.headerIcon}
           name="ios-arrow-back" onPress={() => this.props.navigator.pop()} />
         <Text style={styles.headerText}>

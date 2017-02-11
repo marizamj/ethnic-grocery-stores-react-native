@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import MapView from 'react-native-maps';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from './Header';
-import markers from './markers';
+import markers from './styles/markers';
 
 const fields = [
   'Mapview',
@@ -23,7 +23,7 @@ export default class Search extends Component {
     const styles = StyleSheet.create(this.props.styles);
 
     return <View style={[ styles.flexOne, styles.primaryBackground ]}>
-      <Header styles={this.props.styles}>
+      <Header currentTheme={this.props.currentTheme} styles={this.props.styles}>
         <Icon style={styles.headerIcon}
           name="ios-arrow-back" onPress={() => this.props.navigator.pop()} />
         <Text style={styles.headerText}>
@@ -63,14 +63,14 @@ export default class Search extends Component {
               break;
 
             case 'Hours':
-              elemToRender = <View key={field} style={styles.storeField}>
+              elemToRender = <View key={field}>
                 <Text style={styles.storeFieldTitle}>Hours:</Text>
                 <Text style={styles.storeFieldText}>! placeholder !</Text>
               </View>;
               break;
 
             default:
-              elemToRender = <View key={field} style={styles.storeField}>
+              elemToRender = <View key={field}>
                 <Text style={styles.storeFieldTitle}>{ field }:</Text>
                 <Text style={styles.storeFieldText}>
                   { store[field.toLowerCase()] }

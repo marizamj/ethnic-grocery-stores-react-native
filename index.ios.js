@@ -3,8 +3,9 @@ import { StyleSheet, AppRegistry, Navigator } from 'react-native';
 import App from './src/App';
 import About from './src/About';
 import Search from './src/Search';
+import Settings from './src/Settings';
 import Store from './src/Store';
-import getStyles from './src/styles';
+import getStyles from './src/styles/styles';
 
 import firebase from 'firebase';
 import { loadStoreTypes, authListener, loadStores } from './src/helpers/firebaseLoaders';
@@ -19,12 +20,13 @@ firebase.initializeApp({
 
 export default class EthnicGroceryStores extends Component {
   state = {
+    navigator: null,
     stores: [],
     storesToShow: [],
     storeTypes: [],
     currentStore: null,
     user: { email: '' },
-    currentTheme: 'lavenderField',
+    currentTheme: 'blueberryCheesecake',
     styles: {}
   };
 
@@ -38,16 +40,31 @@ export default class EthnicGroceryStores extends Component {
     loadStores(stores => this.setState({ stores, storesToShow: stores }));
   }
 
+  setTheme = theme => {
+    this.setState({ currentTheme: theme });
+    this.setState({ styles: getStyles(theme) });
+  };
+
   renderScene = (route, navigator) => {
     let sceneToRender;
 
     switch (route.title) {
       case 'Search':
-        sceneToRender = <Search styles={this.state.styles} navigator={navigator} />;
+        sceneToRender = <Search styles={this.state.styles} navigator={navigator}
+          currentTheme={this.state.currentTheme} />;
         break;
 
       case 'About':
-        sceneToRender = <About styles={this.state.styles} navigator={navigator} />;
+        sceneToRender = <About styles={this.state.styles} navigator={navigator}
+          currentTheme={this.state.currentTheme} />;
+        break;
+
+      case 'Settings':
+        sceneToRender = <Settings styles={this.state.styles} navigator={navigator}
+          currentTheme={this.state.currentTheme} setTheme={ theme => {
+            this.setTheme(theme);
+            navigator.push({ title: 'Home' });
+          }} />;
         break;
 
       case 'Store':

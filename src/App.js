@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Header from './Header';
 import Menu from './Menu';
 import Search from './Search';
-import markers from './markers';
+import markers from './styles/markers';
 
 export default class App extends Component {
   state = {
@@ -39,6 +39,11 @@ export default class App extends Component {
     ).start();
   };
 
+  closeMenuAndPushRoute = route => {
+    this.setState({ menu: false });
+    this.props.navigator.push({ title: route });
+  };
+
   render() {
     const styles = StyleSheet.create(this.props.styles);
 
@@ -48,12 +53,12 @@ export default class App extends Component {
     });
 
     return <View style={styles.flexOne}>
-      <Header styles={this.props.styles}>
+      <Header currentTheme={this.props.currentTheme} styles={this.props.styles}>
         <Icon onPress={() => this.setState({ menu: !this.state.menu })}
           style={styles.headerIcon} name="ios-menu" />
         <View>
           <Text style={styles.headerText}>
-            All stores <Icon color="white" size={15} name="ios-arrow-down" />
+            All stores <Icon style={styles.headerDropdownIcon} name="ios-arrow-down" />
           </Text>
         </View>
         <Icon onPress={() => this.props.navigator.push({ title: 'Search' })}
@@ -71,14 +76,6 @@ export default class App extends Component {
           longitudeDelta: 0.05
         }}>
 
-        <Animated.View style={{ width }}>
-          <Menu styles={this.props.styles} user={this.state.user}
-            onAbout={() => {
-              this.setState({ menu: false });
-              this.props.navigator.push({ title: 'About' });
-            }} />
-        </Animated.View>
-
         {
           this.state.stores.map(store =>
             <MapView.Marker key={store.id}
@@ -89,6 +86,13 @@ export default class App extends Component {
               onPress={ () => this.props.onOpenStore(store) } />
           )
         }
+
+        <Animated.View style={{ width }}>
+          <Menu styles={this.props.styles} user={this.state.user}
+          onAbout={ () => this.closeMenuAndPushRoute('About') }
+          onSettings={ () => this.closeMenuAndPushRoute('Settings') }
+          />
+        </Animated.View>
 
       </MapView>
 
