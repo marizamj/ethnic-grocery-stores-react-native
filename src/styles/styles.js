@@ -9,7 +9,7 @@ export default function getStyles(theme) {
     },
 
     flexRow: {
-      flexDirection: 'row'
+      flexDirection: 'row',
     },
 
     primaryBackground: {
@@ -105,6 +105,34 @@ export default function getStyles(theme) {
 
     user: {
       height: 75
+    },
+
+    filters: {
+      position: 'absolute',
+      bottom: 0,
+      right: 0,
+      left: 0,
+      // backgroundColor: currentTheme.primaryLight,
+    },
+
+    filtersHeader: {
+      height: 50,
+      backgroundColor: currentTheme.primaryDark,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingHorizontal: 15,
+      borderColor: '#cccccc',
+      borderWidth: currentTheme.barStyle === 'dark-content' ? 1  : 0,
+    },
+
+    filtersPickerText: {
+      color: currentTheme.primaryDark
+    },
+
+    filtersHeaderBtn: {
+      color: currentTheme.primaryLight,
+      lineHeight: 50,
+      fontSize: 18
     },
 
     search: {
