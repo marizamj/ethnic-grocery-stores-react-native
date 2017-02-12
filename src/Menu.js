@@ -10,7 +10,7 @@ export default class Menu extends Component {
   render() {
     const styles = StyleSheet.create(this.props.styles);
 
-    return <View style={styles.menu}>
+    return <View>
       <ScrollView>
       {
         this.state.user.email ?
@@ -48,7 +48,6 @@ export default class Menu extends Component {
             </View>
           </TouchableHighlight>)
       }
-
       </ScrollView>
     </View>
   }

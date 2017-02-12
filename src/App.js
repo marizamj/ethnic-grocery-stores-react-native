@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Animated, Easing } from 'react-native';
-import MapView from 'react-native-maps';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from './Header';
 import Menu from './Menu';
-import Search from './Search';
-import SvgMarker from './SvgMarker';
-import themes from './styles/themes';
+import MapView from './MapView';
 
 export default class App extends Component {
   state = {
@@ -48,6 +45,7 @@ export default class App extends Component {
   render() {
     const styles = StyleSheet.create(this.props.styles);
     const { currentTheme, navigator } = this.props;
+    const { menu, stores, storesToShow, storeTypes, user } = this.state;
 
     const width = this.animatedValue.interpolate({
       inputRange: [ 0, 1 ],
@@ -56,7 +54,7 @@ export default class App extends Component {
 
     return <View style={styles.flexOne}>
       <Header currentTheme={currentTheme} styles={this.props.styles}>
-        <Icon onPress={() => this.setState({ menu: !this.state.menu })}
+        <Icon onPress={() => this.setState({ menu: !menu })}
           style={styles.headerIcon} name="ios-menu" />
         <View>
           <Text style={styles.headerText}>
@@ -67,43 +65,21 @@ export default class App extends Component {
           style={styles.headerIcon} name="ios-search" />
       </Header>
 
-      <MapView style={[ styles.flexOne, styles.flexRow ]}
-        onStartShouldSetResponder={ e => {
-          if (this.state.menu && e.nativeEvent.locationX > 250)
-            this.setState({ menu: false });
-        }} initialRegion={{
-          latitude: 52.366017,
-          longitude: 4.893490,
-          latitudeDelta: 0.05,
-          longitudeDelta: 0.05
-        }}>
+      <View style={[ styles.flexOne, styles.flexRow ]}>
 
-        {
-          this.state.stores.map(store =>
-            <MapView.Marker key={store.id}
-              style={{ marginTop: 200 }}
-              coordinate={{
-                latitude: store.latLng.lat,
-                longitude: store.latLng.lng,
-              }} onStartShouldSetResponder={ () => this.props.onOpenStore(store) }>
-              <SvgMarker scale={0.3}
-                baseColor={themes[currentTheme].markerFirst}
-                additionalColor={themes[currentTheme].markerSecond} />
-            </MapView.Marker>
-          )
-        }
+        <MapView stores={stores} styles={this.props.styles}
+          currentTheme={currentTheme}
+          onCloseMenu={ () => {
+            if (menu) this.setState({ menu: false });
+          }} onOpenStore={ store => this.props.onOpenStore(store) } />
 
-        <Animated.View style={{ width }}>
-          <Menu styles={this.props.styles} user={this.state.user}
+        <Animated.View style={[{ width }, styles.menu]}>
+          <Menu styles={this.props.styles} user={user}
           onAbout={ () => this.closeMenuAndPushRoute('About') }
-          onSettings={ () => this.closeMenuAndPushRoute('Settings') }
-          />
+          onSettings={ () => this.closeMenuAndPushRoute('Settings') } />
         </Animated.View>
 
-      </MapView>
-
+      </View>
     </View>
   }
 }
-
-// image={markers[this.props.currentTheme]}

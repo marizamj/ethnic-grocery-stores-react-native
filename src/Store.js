@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
-import MapView from 'react-native-maps';
+import NativeMap from 'react-native-maps';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from './Header';
 import SvgMarker from './SvgMarker';
@@ -42,21 +42,21 @@ export default class Search extends Component {
 
           switch (field) {
             case 'Mapview':
-              elemToRender = <MapView key={field} initialRegion={{
+              elemToRender = <NativeMap key={field} initialRegion={{
                 latitude: lat + 0.0005,
                 longitude: lng,
                 latitudeDelta: 0.003,
                 longitudeDelta: 0.003
               }} style={styles.storeMap}>
-                <MapView.Marker coordinate={{
+                <NativeMap.Marker coordinate={{
                   latitude: lat,
                   longitude: lng,
                 }}>
                   <SvgMarker scale={0.3}
                     baseColor={themes[currentTheme].markerFirst}
                     additionalColor={themes[currentTheme].markerSecond} />
-                </MapView.Marker>
-              </MapView>;
+                </NativeMap.Marker>
+              </NativeMap>;
               break;
 
             case 'QuickContacts':

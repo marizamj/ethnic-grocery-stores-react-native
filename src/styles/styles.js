@@ -39,7 +39,6 @@ export default function getStyles(theme) {
 
     headerText: {
       color: currentTheme.primaryLight,
-      // fontFamily: 'Roboto-Medium',
       fontSize: 20,
       textAlign: 'center',
       marginTop: 10,
@@ -51,11 +50,33 @@ export default function getStyles(theme) {
 
     menu: {
       backgroundColor: currentTheme.primaryLight,
-      flex: 1,
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
       shadowColor: 'slategrey',
       shadowOffset: { width: 0, height: 0 },
       shadowRadius: 200,
       shadowOpacity: 1
+    },
+
+    menuListItem: {
+      height: 75,
+    },
+
+    menuListItemIcon: {
+      color: currentTheme.textLighter,
+      marginLeft: 15,
+      fontSize: 35,
+      lineHeight: 75,
+      width: 30,
+      textAlign: 'center',
+    },
+
+    menuListItemText: {
+      color: currentTheme.textLighter,
+      marginLeft: 10,
+      fontSize: 20,
+      lineHeight: 75,
     },
 
     signIn: {
@@ -82,26 +103,6 @@ export default function getStyles(theme) {
 
     user: {
       height: 75
-    },
-
-    menuListItem: {
-      height: 75,
-    },
-
-    menuListItemIcon: {
-      color: currentTheme.textLighter,
-      marginLeft: 15,
-      fontSize: 35,
-      lineHeight: 75,
-      width: 30,
-      textAlign: 'center',
-    },
-
-    menuListItemText: {
-      color: currentTheme.textLighter,
-      marginLeft: 10,
-      fontSize: 20,
-      lineHeight: 75,
     },
 
     search: {
