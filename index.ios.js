@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, AppRegistry, Navigator } from 'react-native';
+import { StyleSheet, AppRegistry, Navigator, AsyncStorage } from 'react-native';
 import App from './src/App';
 import About from './src/About';
 import Search from './src/Search';
@@ -26,12 +26,17 @@ export default class EthnicGroceryStores extends Component {
     storeTypes: [],
     currentStore: null,
     user: { email: '' },
-    currentTheme: 'blueberryCheesecake',
+    currentTheme: 'caviar',
     styles: {}
   };
 
   componentWillMount() {
-    this.setState({ styles: getStyles(this.state.currentTheme) });
+    AsyncStorage.getItem('currentTheme', (err, result) => {
+      if (!err && result)
+        this.setState({ currentTheme: result, styles: getStyles(result) });
+      else
+        this.setState({ styles: getStyles(this.state.currentTheme) });
+    });
   }
 
   componentDidMount() {
@@ -43,6 +48,7 @@ export default class EthnicGroceryStores extends Component {
   setTheme = theme => {
     this.setState({ currentTheme: theme });
     this.setState({ styles: getStyles(theme) });
+    AsyncStorage.setItem('currentTheme', theme);
   };
 
   renderScene = (route, navigator) => {
