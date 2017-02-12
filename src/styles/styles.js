@@ -22,6 +22,8 @@ export default function getStyles(theme) {
       paddingTop: 23,
       flexDirection: 'row',
       justifyContent: 'space-between',
+      borderColor: '#cccccc',
+      borderBottomWidth: currentTheme.barStyle === 'dark-content' ? 1  : 0,
     },
 
     headerIcon: {
@@ -54,8 +56,8 @@ export default function getStyles(theme) {
       top: 0,
       bottom: 0,
       shadowColor: 'slategrey',
-      shadowOffset: { width: 0, height: 0 },
-      shadowRadius: 200,
+      shadowOffset: { width: 0, height: 150 },
+      shadowRadius: 100,
       shadowOpacity: 1
     },
 

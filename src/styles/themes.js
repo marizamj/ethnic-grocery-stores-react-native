@@ -5,7 +5,7 @@ export default {
     primaryLight: '#e2e3c3',
     primaryDark: '#4a7337',
     additionalLight: '#85a238',
-    additionalDark: '#b31602',
+    additionalDark: '#bd1500',
     borders: 'lightgray',
     textLighter: '#6b8551',
     textDarker: '#202816',
@@ -31,12 +31,12 @@ export default {
     barStyle: 'dark-content',
     title: 'Maki',
     primaryLight: '#282a27',
-    primaryDark: '#ffffff',
+    primaryDark: '#e9e2d0',
     additionalLight: '#a5cc5a',
     additionalDark: '#f05922',
     borders: 'lightgray',
     textLighter: '#fe8b5e',
-    textDarker: '#f6f8f7',
+    textDarker: '#e9e2d0',
     markerFirst: '#a5cc5a',
     markerSecond: '#f05922'
   },
@@ -129,14 +129,14 @@ export default {
     barStyle: 'dark-content',
     title: 'Pina Colada',
     primaryLight: '#4e2919',
-    primaryDark: '#ededed',
-    additionalLight: '#9e5f40',
-    additionalDark: '#f5c932',
+    primaryDark: '#fcffeb',
+    additionalLight: '#ff4040',
+    additionalDark: '#e5ca13',
     borders: 'lightgray',
     textLighter: '#ededed',
     textDarker: '#ffffff',
-    markerFirst: '#f5c932',
-    markerSecond: '#84d31f'
+    markerFirst: '#e5ca13',
+    markerSecond: '#74bb1a'
   },
 
   // originalTheme: {
