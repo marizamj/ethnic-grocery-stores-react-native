@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, ScrollView, Image, TouchableHighlight } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Header from './Header';
-import themes from './styles/themes';
-import pictures from './styles/pictures';
+import Header from '../Header';
+import themes from '../styles/themes';
+import pictures from '../styles/pictures';
 
 export default class Search extends Component {
   render() {

@@ -31,7 +31,7 @@ export default function getStyles(theme) {
       fontSize: 30,
       marginTop: 8,
       width: 45,
-      textAlign: 'center'
+      textAlign: 'center',
     },
 
     headerDropdownIcon: {
@@ -47,7 +47,7 @@ export default function getStyles(theme) {
     },
 
     iconPlaceholder: {
-      width: 45
+      width: 45,
     },
 
     menu: {
@@ -58,7 +58,7 @@ export default function getStyles(theme) {
       shadowColor: 'slategrey',
       shadowOffset: { width: 0, height: 150 },
       shadowRadius: 100,
-      shadowOpacity: 1
+      shadowOpacity: 1,
     },
 
     menuListItem: {
@@ -84,7 +84,7 @@ export default function getStyles(theme) {
     menuSignIn: {
       backgroundColor: currentTheme.additionalDark,
       height: 75,
-      flexDirection: 'row'
+      flexDirection: 'row',
     },
 
     menuSignInIcon: {
@@ -93,7 +93,7 @@ export default function getStyles(theme) {
       fontSize: 50,
       height: 60,
       width: 45,
-      lineHeight: 75
+      lineHeight: 75,
     },
 
     menuSignInText: {
@@ -105,7 +105,7 @@ export default function getStyles(theme) {
 
     user: {
       // backgroundColor: currentTheme.additionalDark,
-      height: 75
+      height: 75,
     },
 
     filters: {
@@ -113,7 +113,6 @@ export default function getStyles(theme) {
       bottom: 0,
       right: 0,
       left: 0,
-      // backgroundColor: currentTheme.primaryLight,
     },
 
     filtersHeader: {
@@ -127,13 +126,13 @@ export default function getStyles(theme) {
     },
 
     filtersPickerText: {
-      color: currentTheme.primaryDark
+      color: currentTheme.primaryDark,
     },
 
     filtersHeaderBtn: {
       color: currentTheme.primaryLight,
       lineHeight: 50,
-      fontSize: 18
+      fontSize: 18,
     },
 
     search: {
@@ -144,7 +143,7 @@ export default function getStyles(theme) {
       paddingHorizontal: 20,
       fontSize: 20,
       borderStyle: 'solid',
-      borderWidth: 1
+      borderWidth: 1,
     },
 
     searchResultsItem: {
@@ -153,15 +152,15 @@ export default function getStyles(theme) {
       marginHorizontal: 20,
       borderStyle: 'solid',
       borderTopColor: 'transparent',
-      borderWidth: 1
+      borderWidth: 1,
     },
 
     firstItem: {
-      borderTopColor: currentTheme.borders
+      borderTopColor: currentTheme.borders,
     },
 
     storeMap: {
-      height: 150
+      height: 150,
     },
 
     storeType: {
@@ -169,14 +168,14 @@ export default function getStyles(theme) {
       backgroundColor: currentTheme.additionalLight,
       fontSize: 20,
       textAlign: 'center',
-      padding: 5
+      padding: 5,
     },
 
     storeQuickContacts: {
       backgroundColor: currentTheme.additionalDark,
       height: 60,
       flexDirection: 'row',
-      justifyContent: 'space-around'
+      justifyContent: 'space-around',
     },
 
     storeQuickContactsIcon : {
@@ -188,14 +187,31 @@ export default function getStyles(theme) {
     storeFieldTitle: {
       color: currentTheme.additionalDark,
       fontSize: 18,
-      padding: 10
+      padding: 10,
     },
 
     storeFieldText: {
       color: currentTheme.textDarker,
       fontSize: 22,
       padding: 5,
-      paddingLeft: 40
+      paddingLeft: 40,
+    },
+
+    storeHoursDay: {
+      flexDirection: 'row',
+      paddingLeft: 40,
+    },
+
+    storeHoursDayTitle: {
+      color: currentTheme.textDarker,
+      fontSize: 20,
+      flex: 1,
+    },
+
+    storeHoursDayTime: {
+      color: currentTheme.textDarker,
+      fontSize: 22,
+      flex: 4,
     },
 
     aboutIcons: {
@@ -209,12 +225,12 @@ export default function getStyles(theme) {
       backgroundColor: currentTheme.additionalLight,
       fontSize: 20,
       textAlign: 'center',
-      padding: 5
+      padding: 5,
     },
 
     settingsItem: {
       height: 125,
-      flexDirection: 'row'
+      flexDirection: 'row',
     },
 
     settingsItemText: {
@@ -227,14 +243,14 @@ export default function getStyles(theme) {
     settingsItemTextContainer: {
       height: 45,
       marginTop: 80,
-      width: 270
+      width: 270,
     },
 
     settingsItemImage: {
       height: 200,
       flex: 1,
       flexDirection: 'row',
-      justifyContent: 'flex-end'
+      justifyContent: 'flex-end',
     },
 
     signInForm: {
@@ -269,14 +285,14 @@ export default function getStyles(theme) {
       height: 50,
       marginHorizontal: 40,
       borderRadius: 5,
-      marginVertical: 10
+      marginVertical: 10,
     },
 
     btnText: {
       color: currentTheme.primaryLight,
       fontSize: 20,
       textAlign: 'center',
-      marginVertical: 13
+      marginVertical: 13,
     },
 
     p: {

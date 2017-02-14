@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, AppRegistry, Navigator, AsyncStorage } from 'react-native';
-import App from './src/App';
-import About from './src/About';
-import Search from './src/Search';
-import Settings from './src/Settings';
-import Store from './src/Store';
+import App from './src/pages/App';
+import About from './src/pages/About';
+import Search from './src/pages/Search';
+import Settings from './src/pages/Settings';
+import Store from './src/pages/Store';
 import getStyles from './src/styles/styles';
 
 import firebase from 'firebase';
-import { loadStoreTypes, authListener, loadStores } from './src/helpers/firebaseLoaders';
+import { loadStoreTypes, authListener, loadStores } from './src/lib/firebaseLoaders';
 
 firebase.initializeApp({
   apiKey: "AIzaSyDyRukiPIej168d6elewuZpF7VR4P0ueWU",

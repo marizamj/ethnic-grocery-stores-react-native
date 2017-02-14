@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Animated, Easing } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Header from './Header';
-import Menu from './Menu';
-import MapView from './MapView';
-import Filters from './Filters';
+import Header from '../Header';
+import Menu from '../Menu';
+import MapView from '../MapView';
+import Filters from '../Filters';
 
 export default class App extends Component {
   state = {

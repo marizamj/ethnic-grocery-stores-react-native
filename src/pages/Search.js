@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TextInput, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Header from './Header';
+import Header from '../Header';
 
 export default class Search extends Component {
   render() {
