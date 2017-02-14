@@ -6,21 +6,17 @@ import Search from './src/pages/Search';
 import Settings from './src/pages/Settings';
 import Store from './src/pages/Store';
 import getStyles from './src/styles/styles';
+import {
+  firebaseInitialize,
+  loadStoreTypes,
+  authListener,
+  loadStores
+} from './src/lib/firebaseLib';
 
-import firebase from 'firebase';
-import { loadStoreTypes, authListener, loadStores } from './src/lib/firebaseLoaders';
-
-firebase.initializeApp({
-  apiKey: "AIzaSyDyRukiPIej168d6elewuZpF7VR4P0ueWU",
-  authDomain: "ethnic-grocery-stores.firebaseapp.com",
-  databaseURL: "https://ethnic-grocery-stores.firebaseio.com",
-  storageBucket: "ethnic-grocery-stores.appspot.com",
-  messagingSenderId: "131961135840"
-});
+firebaseInitialize();
 
 export default class EthnicGroceryStores extends Component {
   state = {
-    navigator: null,
     stores: [],
     storesToShow: [],
     storeTypes: [],

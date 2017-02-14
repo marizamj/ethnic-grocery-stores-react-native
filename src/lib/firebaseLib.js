@@ -1,5 +1,15 @@
 const firebase = require('firebase');
 
+const firebaseInitialize = () => {
+  firebase.initializeApp({
+    apiKey: "AIzaSyDyRukiPIej168d6elewuZpF7VR4P0ueWU",
+    authDomain: "ethnic-grocery-stores.firebaseapp.com",
+    databaseURL: "https://ethnic-grocery-stores.firebaseio.com",
+    storageBucket: "ethnic-grocery-stores.appspot.com",
+    messagingSenderId: "131961135840"
+  });
+};
+
 const toArrayStores = obj =>
   Object.keys(obj || {}).map(id => ({ id, ...obj[id] }));
 
@@ -24,4 +34,4 @@ const authListener = f => {
   firebase.auth().onAuthStateChanged(user => f(Object.assign({ email: '' }, user)));
 };
 
-export { loadStoreTypes, authListener, loadStores };
+export { firebaseInitialize, loadStoreTypes, authListener, loadStores };
