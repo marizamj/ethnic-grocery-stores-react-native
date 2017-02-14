@@ -25,16 +25,20 @@ export default class App extends Component {
   }
 
   componentWillUpdate(_, nextState) {
-    if (nextState.menu !== this.state.menu) this.toggleMenu();
-    if (nextState.showFilters !== this.state.showFilters) this.toggleFilters();
+    const { menu, showFilters } = this.state;
+
+    if (nextState.menu !== menu)
+      this.toggleAnimatedWindow(menu, this.animatedMenuValue, 200);
+    if (nextState.showFilters !== showFilters)
+      this.toggleAnimatedWindow(showFilters, this.animatedFiltersValue, 200);
   }
 
-  toggleMenu = () => {
+  toggleAnimatedWindow = (stateValue, animatedValue, duration) => {
     Animated.timing(
-      this.animatedMenuValue,
+      animatedValue,
       {
-        toValue: this.state.menu ? 0 : 1,
-        duration: 200,
+        toValue: stateValue ? 0 : 1,
+        duration: duration,
         easing: Easing.inout
       }
     ).start();
@@ -43,17 +47,6 @@ export default class App extends Component {
   closeMenuAndPushRoute = route => {
     this.setState({ menu: false });
     this.props.navigator.push({ title: route });
-  };
-
-  toggleFilters = () => {
-    Animated.timing(
-      this.animatedFiltersValue,
-      {
-        toValue: this.state.showFilters ? 0 : 1,
-        duration: 200,
-        easing: Easing.inout
-      }
-    ).start();
   };
 
   changeFilter = filter =>  {
@@ -74,12 +67,12 @@ export default class App extends Component {
     const { currentTheme, navigator } = this.props;
     const { menu, stores, storesToShow, storeTypes, user, filter, showFilters } = this.state;
 
-    const width = this.animatedMenuValue.interpolate({
+    const menuWidth = this.animatedMenuValue.interpolate({
       inputRange: [ 0, 1 ],
       outputRange: [ 0, 250 ]
     });
 
-    const height = this.animatedFiltersValue.interpolate({
+    const filtersHeight = this.animatedFiltersValue.interpolate({
       inputRange: [ 0, 1 ],
       outputRange: [ 0, 250 ]
     });
@@ -107,7 +100,7 @@ export default class App extends Component {
             if (menu) this.setState({ menu: false });
           }} onOpenStore={ store => this.props.onOpenStore(store) } />
 
-        <Animated.View style={[{ width }, styles.menu]}>
+        <Animated.View style={[{ width: menuWidth }, styles.menu]}>
           <Menu styles={this.props.styles} user={user}
           onAbout={ () => this.closeMenuAndPushRoute('About') }
           onSettings={ () => this.closeMenuAndPushRoute('Settings') }
@@ -118,7 +111,7 @@ export default class App extends Component {
 
       </View>
 
-      <Animated.View style={[{ height }, styles.filters]}>
+      <Animated.View style={[{ height: filtersHeight }, styles.filters]}>
         <Filters styles={this.props.styles} storeTypes={storeTypes}
           filter={filter} onCloseFilter={ () =>
             this.setState({ showFilters: false })
