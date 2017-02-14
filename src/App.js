@@ -9,7 +9,7 @@ import Filters from './Filters';
 export default class App extends Component {
   state = {
     menu: false,
-    showFilters: true,
+    showFilters: false,
     filter: 'All stores',
     stores: this.props.stores,
     storesToShow: this.props.storesToShow,
@@ -110,7 +110,10 @@ export default class App extends Component {
         <Animated.View style={[{ width }, styles.menu]}>
           <Menu styles={this.props.styles} user={user}
           onAbout={ () => this.closeMenuAndPushRoute('About') }
-          onSettings={ () => this.closeMenuAndPushRoute('Settings') } />
+          onSettings={ () => this.closeMenuAndPushRoute('Settings') }
+          onSignIn={ () => {  } }
+          onShare={ () => {  }}
+          onAddStore={ () => {  }} />
         </Animated.View>
 
       </View>

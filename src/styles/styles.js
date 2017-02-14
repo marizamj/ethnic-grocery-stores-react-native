@@ -81,13 +81,13 @@ export default function getStyles(theme) {
       lineHeight: 75,
     },
 
-    signIn: {
+    menuSignIn: {
       backgroundColor: currentTheme.additionalDark,
       height: 75,
       flexDirection: 'row'
     },
 
-    signInIcon: {
+    menuSignInIcon: {
       color: currentTheme.primaryLight,
       marginLeft: 10,
       fontSize: 50,
@@ -96,7 +96,7 @@ export default function getStyles(theme) {
       lineHeight: 75
     },
 
-    signInText: {
+    menuSignInText: {
       color: currentTheme.primaryLight,
       marginLeft: 10,
       lineHeight: 75,
@@ -104,6 +104,7 @@ export default function getStyles(theme) {
     },
 
     user: {
+      // backgroundColor: currentTheme.additionalDark,
       height: 75
     },
 
@@ -234,6 +235,48 @@ export default function getStyles(theme) {
       flex: 1,
       flexDirection: 'row',
       justifyContent: 'flex-end'
+    },
+
+    signInForm: {
+      marginTop: 30,
+    },
+
+    signInText: {
+      color: currentTheme.textLighter,
+      fontSize: 18,
+      textAlign: 'center',
+    },
+
+    signUpText: {
+      color: currentTheme.textLighter,
+      fontSize: 18,
+      marginVertical: 5,
+      marginHorizontal: 40,
+    },
+
+    signInFormInput: {
+      fontSize: 18,
+      height: 50,
+      marginHorizontal: 40,
+      paddingHorizontal: 20,
+      marginBottom: 5,
+      borderColor: 'lightgray',
+      borderWidth: 1,
+    },
+
+    btn: {
+      backgroundColor: currentTheme.primaryDark,
+      height: 50,
+      marginHorizontal: 40,
+      borderRadius: 5,
+      marginVertical: 10
+    },
+
+    btnText: {
+      color: currentTheme.primaryLight,
+      fontSize: 20,
+      textAlign: 'center',
+      marginVertical: 13
     },
 
     p: {
