@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class Menu extends Component {
@@ -41,24 +41,24 @@ export default class Menu extends Component {
 
           </View>
           :
-          <TouchableHighlight>
+          <TouchableOpacity>
             <View style={styles.menuSignIn}>
               <Icon name="ios-contact-outline" style={styles.menuSignInIcon} />
               <Text style={styles.menuSignInText}>Sign in</Text>
             </View>
-          </TouchableHighlight>
+          </TouchableOpacity>
       }
 
       {
         this.menuFields.map( field =>
-          <TouchableHighlight key={field.title} underlayColor="transparent"
+          <TouchableOpacity key={field.title}
             style={styles.menuListItem} onPress={field.onPress}>
             <View style={[styles.flexRow, styles.flexOne]}>
               <Icon name={field.icon} style={styles.menuListItemIcon}>
               </Icon>
               <Text style={styles.menuListItemText}>{field.title}</Text>
             </View>
-          </TouchableHighlight>)
+          </TouchableOpacity>)
       }
       </ScrollView>
     </View>

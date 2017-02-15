@@ -106,7 +106,7 @@ export default class App extends Component {
           onSettings={ () => this.closeMenuAndPushRoute('Settings') }
           onSignIn={ () => {  } }
           onShare={ () => {  }}
-          onAddStore={ () => {  }} />
+          onAddStore={ () => this.closeMenuAndPushRoute('AddStore') } />
         </Animated.View>
 
       </View>

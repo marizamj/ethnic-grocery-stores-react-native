@@ -5,6 +5,7 @@ import About from './src/pages/About';
 import Search from './src/pages/Search';
 import Settings from './src/pages/Settings';
 import Store from './src/pages/Store';
+import AddStore from './src/pages/AddStore';
 import getStyles from './src/styles/styles';
 import {
   firebaseInitialize,
@@ -48,30 +49,37 @@ export default class EthnicGroceryStores extends Component {
   };
 
   renderScene = (route, navigator) => {
+    const { currentTheme, styles, currentStore, storeTypes } = this.state;
+
     let sceneToRender;
 
     switch (route.title) {
       case 'Search':
-        sceneToRender = <Search styles={this.state.styles} navigator={navigator}
-          currentTheme={this.state.currentTheme} />;
+        sceneToRender = <Search styles={styles} navigator={navigator}
+          currentTheme={currentTheme} />;
         break;
 
       case 'About':
-        sceneToRender = <About styles={this.state.styles} navigator={navigator}
-          currentTheme={this.state.currentTheme} />;
+        sceneToRender = <About styles={styles} navigator={navigator}
+          currentTheme={currentTheme} />;
         break;
 
       case 'Settings':
-        sceneToRender = <Settings styles={this.state.styles} navigator={navigator}
-          currentTheme={this.state.currentTheme} setTheme={ theme => {
+        sceneToRender = <Settings styles={styles} navigator={navigator}
+          currentTheme={currentTheme} setTheme={ theme => {
             this.setTheme(theme);
             navigator.push({ title: 'Home' });
           }} />;
         break;
 
       case 'Store':
-        sceneToRender = <Store styles={this.state.styles} navigator={navigator}
-          store={this.state.currentStore} currentTheme={this.state.currentTheme} />;
+        sceneToRender = <Store styles={styles} navigator={navigator}
+          store={currentStore} currentTheme={currentTheme} />;
+        break;
+
+      case 'AddStore':
+        sceneToRender = <AddStore styles={styles} storeTypes={storeTypes}
+          navigator={navigator} currentTheme={currentTheme} />;
         break;
 
       default:
