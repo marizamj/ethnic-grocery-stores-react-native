@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, AppRegistry, Navigator, AsyncStorage } from 'react-native';
+import { StyleSheet, AppRegistry, Navigator, AsyncStorage, AlertIOS } from 'react-native';
 import App from './src/pages/App';
 import About from './src/pages/About';
 import Search from './src/pages/Search';
@@ -11,7 +11,8 @@ import {
   firebaseInitialize,
   loadStoreTypes,
   authListener,
-  loadStores
+  loadStores,
+  firebasePush
 } from './src/lib/firebaseLib';
 
 firebaseInitialize();
@@ -48,6 +49,20 @@ export default class EthnicGroceryStores extends Component {
     AsyncStorage.setItem('currentTheme', theme);
   };
 
+  onSubmitAddStore = form => {
+    firebasePush('newStores', form, err => {
+      if (err) {
+        AlertIOS.alert('Oh no!', 'Something went wrong. Please, try again.');
+
+      } else {
+        AlertIOS.alert(
+          'Thank you!',
+          'Your form was successfully submitted! We will check it up and add to our database as soon as possible.'
+        );
+      }
+    });
+  };
+
   renderScene = (route, navigator) => {
     const { currentTheme, styles, currentStore, storeTypes } = this.state;
 
@@ -79,7 +94,8 @@ export default class EthnicGroceryStores extends Component {
 
       case 'AddStore':
         sceneToRender = <AddStore styles={styles} storeTypes={storeTypes}
-          navigator={navigator} currentTheme={currentTheme} />;
+          navigator={navigator} currentTheme={currentTheme}
+          onSubmitAddStore={this.onSubmitAddStore} />;
         break;
 
       default:

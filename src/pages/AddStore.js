@@ -42,7 +42,7 @@ export default class AddStore extends Component {
       (form.type.length > 0 || form['other type'] && form['other type'].trim());
 
     if (requiredFields) {
-      this.props.onSubmitAddStore();
+      this.props.onSubmitAddStore(form);
 
     } else {
       this.setState({
@@ -107,7 +107,7 @@ export default class AddStore extends Component {
       }
 
         <TouchableOpacity style={[styles.btn, styles.addStoreSubmit]}
-          onPress={this.handleSubmit}>
+          onPress={ () => this.handleSubmit() }>
           <Text style={styles.btnText}>Submit</Text>
         </TouchableOpacity>
       </ScrollView>

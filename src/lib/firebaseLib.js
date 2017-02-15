@@ -34,4 +34,14 @@ const authListener = f => {
   firebase.auth().onAuthStateChanged(user => f(Object.assign({ email: '' }, user)));
 };
 
-export { firebaseInitialize, loadStoreTypes, authListener, loadStores };
+const firebasePush = (ref, form, callback) => {
+  firebase.database().ref(ref).push(form, callback);
+};
+
+export {
+  firebaseInitialize,
+  loadStoreTypes,
+  authListener,
+  loadStores,
+  firebasePush
+};
