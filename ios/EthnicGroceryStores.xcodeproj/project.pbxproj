@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -26,7 +25,9 @@
 		4482D046DEF94E318780E4D9 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2443509E9D6048A788FCAC01 /* MaterialIcons.ttf */; };
 		520C7EE01E4A79C400A3FC4D /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 520C7EDF1E4A79C400A3FC4D /* EvilIcons.ttf */; };
 		5257EA591E4E21030022A150 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5257EA3E1E4E1FC00022A150 /* Ionicons.ttf */; };
+		526A85B91E5528BB00F50FF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 526A85B81E5528BB00F50FF7 /* GoogleService-Info.plist */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		5FF7C5AE7234AFD4E4E339F6 /* Pods_EthnicGroceryStores.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D5A6B8F9CC3FB6C85DE466 /* Pods_EthnicGroceryStores.framework */; };
 		6CBB55B881674C179EBFBBB5 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76CB83A60E934C2F90CFE2E3 /* Zocial.ttf */; };
 		74CF2108A70246A49ED173EC /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE2EFAD2F0404711BC1C5955 /* FontAwesome.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -35,6 +36,7 @@
 		B07CACA7313E409290AD5992 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3C68BE541A4BE695525397 /* libRNVectorIcons.a */; };
 		B59261639AD340C8805B6E7C /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83DB653318E446C4AD876269 /* SimpleLineIcons.ttf */; };
 		B7E5E6D4FC704769BEBFE00A /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DE781CB917984D65858F2414 /* Foundation.ttf */; };
+		C522478725BE41C589A549B5 /* libFirestack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E00ECF81E374926AD371A12 /* libFirestack.a */; };
 		DDEED85E8A2F46FF8AA681DD /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAE7F79ABEC435F92DAECFC /* libAirMaps.a */; };
 /* End PBXBuildFile section */
 
@@ -200,6 +202,13 @@
 			remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
 			remoteInfo = RNVectorIcons;
 		};
+		526A85961E5523A800F50FF7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5EAD75128624466AA31004D5 /* Firestack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = Firestack;
+		};
 		52C24BD11E4F674F0084D524 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 068B12B88A264542B1F1F3B2 /* RNSVG.xcodeproj */;
@@ -264,13 +273,18 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = EthnicGroceryStores/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		14AE3258C096448FAFFA58C4 /* RNBlur.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNBlur.xcodeproj; path = "../node_modules/react-native-blur/ios/RNBlur.xcodeproj"; sourceTree = "<group>"; };
+		14D5A6B8F9CC3FB6C85DE466 /* Pods_EthnicGroceryStores.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EthnicGroceryStores.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2443509E9D6048A788FCAC01 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		37578C6C47E04ADBB265A950 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
+		4F623B685E1D95BB7A79B208 /* Pods-EthnicGroceryStores.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EthnicGroceryStores.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EthnicGroceryStores/Pods-EthnicGroceryStores.debug.xcconfig"; sourceTree = "<group>"; };
 		520C7EDF1E4A79C400A3FC4D /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		5257EA3E1E4E1FC00022A150 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		526A85B81E5528BB00F50FF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
+		5EAD75128624466AA31004D5 /* Firestack.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = Firestack.xcodeproj; path = "../node_modules/react-native-firestack/ios/Firestack.xcodeproj"; sourceTree = "<group>"; };
 		76CB83A60E934C2F90CFE2E3 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		7E00ECF81E374926AD371A12 /* libFirestack.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libFirestack.a; sourceTree = "<group>"; };
 		7FAE7F79ABEC435F92DAECFC /* libAirMaps.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAirMaps.a; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		83DB653318E446C4AD876269 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
@@ -280,6 +294,7 @@
 		AE2EFAD2F0404711BC1C5955 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		B49B6A936108420DB4D30D32 /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSVG.a; sourceTree = "<group>"; };
 		DE781CB917984D65858F2414 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		E4DFC005C07A8EC8CBF9C119 /* Pods-EthnicGroceryStores.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EthnicGroceryStores.release.xcconfig"; path = "Pods/Target Support Files/Pods-EthnicGroceryStores/Pods-EthnicGroceryStores.release.xcconfig"; sourceTree = "<group>"; };
 		FDB92CD124BC4A96AC11D2E1 /* libRNBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBlur.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -303,6 +318,8 @@
 				1029054FE15C4B6F9763227F /* libRNSVG.a in Frameworks */,
 				3856808D1B9A49BCA298BAFA /* libRNBlur.a in Frameworks */,
 				B07CACA7313E409290AD5992 /* libRNVectorIcons.a in Frameworks */,
+				C522478725BE41C589A549B5 /* libFirestack.a in Frameworks */,
+				5FF7C5AE7234AFD4E4E339F6 /* Pods_EthnicGroceryStores.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +414,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		434D71AEB8352184B648EA95 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F623B685E1D95BB7A79B208 /* Pods-EthnicGroceryStores.debug.xcconfig */,
+				E4DFC005C07A8EC8CBF9C119 /* Pods-EthnicGroceryStores.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		520C7EB41E4A1E9E00A3FC4D /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +452,14 @@
 			isa = PBXGroup;
 			children = (
 				526A85571E54E9DA00F50FF7 /* libRNVectorIcons.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		526A85921E5523A800F50FF7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				526A85971E5523A800F50FF7 /* libFirestack.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -482,6 +516,7 @@
 				068B12B88A264542B1F1F3B2 /* RNSVG.xcodeproj */,
 				14AE3258C096448FAFFA58C4 /* RNBlur.xcodeproj */,
 				37578C6C47E04ADBB265A950 /* RNVectorIcons.xcodeproj */,
+				5EAD75128624466AA31004D5 /* Firestack.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -498,10 +533,13 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				526A85B81E5528BB00F50FF7 /* GoogleService-Info.plist */,
 				520C7ED21E4A1EDA00A3FC4D /* Resources */,
 				13B07FAE1A68108700A75B9A /* EthnicGroceryStores */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
+				434D71AEB8352184B648EA95 /* Pods */,
+				9E1CBB7DF5BDC6433AF592DD /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -515,6 +553,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9E1CBB7DF5BDC6433AF592DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14D5A6B8F9CC3FB6C85DE466 /* Pods_EthnicGroceryStores.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -522,10 +568,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "EthnicGroceryStores" */;
 			buildPhases = (
+				3B0555FF83DA7712B1C85499 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				9B774A331CD3586A4D19A1DB /* [CP] Embed Pods Frameworks */,
+				859885E6A72994A1586B2D66 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -565,6 +614,10 @@
 				{
 					ProductGroup = 520C7EB41E4A1E9E00A3FC4D /* Products */;
 					ProjectRef = 0E33833D68D84742B963ECD3 /* AirMaps.xcodeproj */;
+				},
+				{
+					ProductGroup = 526A85921E5523A800F50FF7 /* Products */;
+					ProjectRef = 5EAD75128624466AA31004D5 /* Firestack.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -792,6 +845,13 @@
 			remoteRef = 526A85561E54E9DA00F50FF7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		526A85971E5523A800F50FF7 /* libFirestack.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFirestack.a;
+			remoteRef = 526A85961E5523A800F50FF7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		52C24BD21E4F674F0084D524 /* libRNSVG.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -841,6 +901,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				526A85B91E5528BB00F50FF7 /* GoogleService-Info.plist in Resources */,
 				5257EA591E4E21030022A150 /* Ionicons.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
@@ -873,6 +934,51 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/packager/react-native-xcode.sh";
 		};
+		3B0555FF83DA7712B1C85499 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		859885E6A72994A1586B2D66 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EthnicGroceryStores/Pods-EthnicGroceryStores-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B774A331CD3586A4D19A1DB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EthnicGroceryStores/Pods-EthnicGroceryStores-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -902,13 +1008,38 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F623B685E1D95BB7A79B208 /* Pods-EthnicGroceryStores.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = G4G5327H52;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseDatabase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseMessaging\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseRemoteConfig\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseStorage\"",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/**",
+					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/react-native/React/**/**",
+				);
 				INFOPLIST_FILE = EthnicGroceryStores/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/EthnicGroceryStores\"",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -921,12 +1052,37 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4DFC005C07A8EC8CBF9C119 /* Pods-EthnicGroceryStores.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G4G5327H52;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseDatabase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseMessaging\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseRemoteConfig\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseStorage\"",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/**",
+					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/react-native/React/**/**",
+				);
 				INFOPLIST_FILE = EthnicGroceryStores/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/EthnicGroceryStores\"",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -971,7 +1127,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1006,7 +1162,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

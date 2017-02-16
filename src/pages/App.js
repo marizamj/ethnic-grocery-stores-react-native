@@ -104,7 +104,7 @@ export default class App extends Component {
           <Menu styles={this.props.styles} user={user}
           onAbout={ () => this.closeMenuAndPushRoute('About') }
           onSettings={ () => this.closeMenuAndPushRoute('Settings') }
-          onSignIn={ () => {  } }
+          onSignIn={ this.props.onSignIn }
           onShare={ () => {  }}
           onAddStore={ () => this.closeMenuAndPushRoute('AddStore') } />
         </Animated.View>

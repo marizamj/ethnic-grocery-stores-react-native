@@ -8,14 +8,13 @@ import Store from './src/pages/Store';
 import AddStore from './src/pages/AddStore';
 import getStyles from './src/styles/styles';
 import {
-  firebaseInitialize,
+  // firebaseInitialize,
   loadStoreTypes,
-  authListener,
+  // authListener,
   loadStores,
-  firebasePush
+  // signInWithGoogle
+  // firebasePush
 } from './src/lib/firebaseLib';
-
-firebaseInitialize();
 
 export default class EthnicGroceryStores extends Component {
   state = {
@@ -39,7 +38,7 @@ export default class EthnicGroceryStores extends Component {
 
   componentDidMount() {
     loadStoreTypes(storeTypes => this.setState({ storeTypes }));
-    authListener(user => this.setState({ user }));
+    // authListener(user => this.setState({ user }));
     loadStores(stores => this.setState({ stores, storesToShow: stores }));
   }
 
@@ -103,6 +102,9 @@ export default class EthnicGroceryStores extends Component {
           onOpenStore={ store => {
             this.setState({ currentStore: store });
             navigator.push({ title: 'Store' });
+          }} onSignIn={() => {
+            console.log('sign innnn');
+
           }} />;
     }
 

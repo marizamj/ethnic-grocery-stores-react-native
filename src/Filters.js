@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PickerIOS, StyleSheet, View, Text } from 'react-native';
-import { BlurView, VibrancyView } from 'react-native-blur';
+import { BlurView } from 'react-native-blur';
 
 export default class Filters extends Component {
   state = {
@@ -23,7 +23,7 @@ export default class Filters extends Component {
               this.props.onChangeFilter(this.state.selectedFilter)
             }>Done</Text>
         </View>
-        
+
         <BlurView blurType="light">
           <PickerIOS selectedValue={this.state.selectedFilter}
             onValueChange={this.handleValueChange}>

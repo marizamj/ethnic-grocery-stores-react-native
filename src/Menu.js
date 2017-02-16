@@ -41,7 +41,7 @@ export default class Menu extends Component {
 
           </View>
           :
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => this.props.onSignIn()}>
             <View style={styles.menuSignIn}>
               <Icon name="ios-contact-outline" style={styles.menuSignInIcon} />
               <Text style={styles.menuSignInText}>Sign in</Text>
