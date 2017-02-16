@@ -7,14 +7,8 @@ import Settings from './src/pages/Settings';
 import Store from './src/pages/Store';
 import AddStore from './src/pages/AddStore';
 import getStyles from './src/styles/styles';
-import {
-  // firebaseInitialize,
-  loadStoreTypes,
-  // authListener,
-  loadStores,
-  // signInWithGoogle
-  // firebasePush
-} from './src/lib/firebaseLib';
+import { loadStoreTypes, loadStores } from './src/lib/firebaseLib';
+import { signInWithGoogle, signOut } from './src/lib/OAuthLib';
 
 export default class EthnicGroceryStores extends Component {
   state = {
@@ -22,7 +16,7 @@ export default class EthnicGroceryStores extends Component {
     storesToShow: [],
     storeTypes: [],
     currentStore: null,
-    user: { email: '' },
+    user: { displayName: '' },
     currentTheme: 'caviar',
     styles: {}
   };
@@ -38,7 +32,6 @@ export default class EthnicGroceryStores extends Component {
 
   componentDidMount() {
     loadStoreTypes(storeTypes => this.setState({ storeTypes }));
-    // authListener(user => this.setState({ user }));
     loadStores(stores => this.setState({ stores, storesToShow: stores }));
   }
 
@@ -46,6 +39,17 @@ export default class EthnicGroceryStores extends Component {
     this.setState({ currentTheme: theme });
     this.setState({ styles: getStyles(theme) });
     AsyncStorage.setItem('currentTheme', theme);
+  };
+
+  handleSignIn = () => {
+    signInWithGoogle().then(user => {
+      this.setState({ user });
+      AsyncStorage.setItem('user', JSON.stringify(user));
+    });
+  };
+
+  handleSignOut = () => {
+    signOut();
   };
 
   onSubmitAddStore = form => {
@@ -102,10 +106,9 @@ export default class EthnicGroceryStores extends Component {
           onOpenStore={ store => {
             this.setState({ currentStore: store });
             navigator.push({ title: 'Store' });
-          }} onSignIn={() => {
-            console.log('sign innnn');
-
-          }} />;
+          }}
+          onSignIn={() => this.handleSignIn()}
+          onSignOut={() => this.handleSignOut()} />;
     }
 
     return sceneToRender;

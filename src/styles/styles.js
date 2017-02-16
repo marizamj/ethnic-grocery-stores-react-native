@@ -104,7 +104,7 @@ export default function getStyles(theme) {
     },
 
     user: {
-      // backgroundColor: currentTheme.additionalDark,
+      backgroundColor: currentTheme.additionalDark,
       height: 75,
     },
 

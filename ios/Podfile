@@ -9,8 +9,8 @@ target 'EthnicGroceryStores' do
 
 end
 source 'https://github.com/CocoaPods/Specs.git'
-use_frameworks!
 platform :ios, '8.0'
+use_frameworks!
 
 [
   'Firebase',
@@ -23,3 +23,5 @@ platform :ios, '8.0'
 ].each do |lib|
   pod lib
 end
+
+pod 'DCTAuth', :git => 'https://github.com/danielctull/DCTAuth.git'

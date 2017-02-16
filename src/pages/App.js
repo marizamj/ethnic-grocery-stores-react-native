@@ -101,10 +101,11 @@ export default class App extends Component {
           }} onOpenStore={ store => this.props.onOpenStore(store) } />
 
         <Animated.View style={[{ width: menuWidth }, styles.menu]}>
-          <Menu styles={this.props.styles} user={user}
+          <Menu styles={this.props.styles} user={this.props.user}
           onAbout={ () => this.closeMenuAndPushRoute('About') }
           onSettings={ () => this.closeMenuAndPushRoute('Settings') }
           onSignIn={ this.props.onSignIn }
+          onSignOut={ this.props.onSignOut }
           onShare={ () => {  }}
           onAddStore={ () => this.closeMenuAndPushRoute('AddStore') } />
         </Animated.View>

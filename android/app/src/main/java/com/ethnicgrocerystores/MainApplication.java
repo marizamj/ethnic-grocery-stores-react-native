@@ -4,6 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.facebook.react.ReactApplication;
+import io.fullstack.oauth.OAuthManagerPackage;
 import io.fullstack.firestack.FirestackPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.cmcewen.blurview.BlurViewPackage;
@@ -30,6 +31,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new OAuthManagerPackage(),
             new FirestackPackage(),
             new VectorIconsPackage(),
             new BlurViewPackage(),

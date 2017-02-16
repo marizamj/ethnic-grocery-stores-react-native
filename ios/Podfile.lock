@@ -1,4 +1,5 @@
 PODS:
+  - DCTAuth (3.0)
   - Firebase (3.13.0):
     - Firebase/Core (= 3.13.0)
   - Firebase/Auth (3.13.0):
@@ -61,6 +62,7 @@ PODS:
   - Protobuf (3.2.0)
 
 DEPENDENCIES:
+  - DCTAuth (from `https://github.com/danielctull/DCTAuth.git`)
   - Firebase
   - Firebase/Auth
   - Firebase/Core
@@ -69,7 +71,17 @@ DEPENDENCIES:
   - Firebase/RemoteConfig
   - Firebase/Storage
 
+EXTERNAL SOURCES:
+  DCTAuth:
+    :git: https://github.com/danielctull/DCTAuth.git
+
+CHECKOUT OPTIONS:
+  DCTAuth:
+    :commit: 0a8091a3fc165fb99a6f70cf15b3aed25252dad9
+    :git: https://github.com/danielctull/DCTAuth.git
+
 SPEC CHECKSUMS:
+  DCTAuth: 8add154decd00335d62917828896bba790ce47fd
   Firebase: 5bc34d7b5ff5792e3386c8b28dc6265deeab0da4
   FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
   FirebaseAuth: cc8a1824170adbd351edb7f994490a3fb5c18be6
@@ -83,6 +95,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
   Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
 
-PODFILE CHECKSUM: deda8345b63da41e0517c1d089bbdb1d2fbef0ed
+PODFILE CHECKSUM: d5de895e74f4239062b48f4a9bb1873f6bdbe697
 
 COCOAPODS: 1.2.0

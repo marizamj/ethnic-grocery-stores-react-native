@@ -35,10 +35,6 @@ const loadStores = f => {
   });
 };
 
-// const signInWithGoogle = f => {
-//
-// };
-
 // const authListener = f => {
 //   firestack.auth().onAuthStateChanged(user => f(Object.assign({ email: '' }, user)));
 // };
@@ -52,6 +48,5 @@ export {
   loadStoreTypes,
   // authListener,
   loadStores,
-  // signInWithGoogle
   // firebasePush
 };

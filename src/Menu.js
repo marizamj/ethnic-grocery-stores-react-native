@@ -3,10 +3,6 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-nati
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class Menu extends Component {
-  state = {
-    user: this.props.user,
-  }
-
   menuFields = [
     {
       title: 'Add store',
@@ -27,18 +23,25 @@ export default class Menu extends Component {
       title: 'Settings',
       icon: 'ios-settings-outline',
       onPress: this.props.onSettings
+    },
+    {
+      title: 'Sign out',
+      icon: 'ios-log-out',
+      onPress: this.props.onSignOut
     }
   ];
 
   render() {
     const styles = StyleSheet.create(this.props.styles);
 
+    const { user } = this.props;
+
     return <View>
       <ScrollView>
       {
-        this.state.user.email ?
+        user && user.displayName ?
           <View style={styles.user}>
-
+            <Text style={styles.menuSignInText}>Hola, {user.firstName}</Text>
           </View>
           :
           <TouchableOpacity onPress={() => this.props.onSignIn()}>
