@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PickerIOS, StyleSheet, View, Text } from 'react-native';
+import { PickerIOS, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { BlurView } from 'react-native-blur';
 
 export default class Filters extends Component {
@@ -16,12 +16,13 @@ export default class Filters extends Component {
 
      return <View>
         <View style={styles.filtersHeader}>
-          <Text style={styles.filtersHeaderBtn}
-            onPress={ () => this.props.onCloseFilter() }>Cancel</Text>
-          <Text style={styles.filtersHeaderBtn}
-            onPress={ () =>
-              this.props.onChangeFilter(this.state.selectedFilter)
-            }>Done</Text>
+          <TouchableOpacity onPress={ () => this.props.onCloseFilter() }>
+            <Text style={styles.filtersHeaderBtn}>Cancel</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={ () => this.props.onChangeFilter(this.state.selectedFilter) }>
+            <Text style={styles.filtersHeaderBtn}>Done</Text>
+          </TouchableOpacity>
         </View>
 
         <BlurView blurType="light">

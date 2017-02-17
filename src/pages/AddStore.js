@@ -59,8 +59,10 @@ export default class AddStore extends Component {
 
     return <View style={[ styles.flexOne, styles.primaryBackground ]}>
       <Header currentTheme={currentTheme} styles={this.props.styles}>
-        <Icon style={styles.headerIcon}
-          name="ios-arrow-back" onPress={() => navigator.pop()} />
+        <TouchableOpacity style={styles.headerIconContainer}
+          onPress={() => this.props.navigator.pop()}>
+          <Icon style={styles.headerIcon} name="ios-arrow-back"  />
+        </TouchableOpacity>
         <Text style={styles.headerText}>
           Add new store
         </Text>

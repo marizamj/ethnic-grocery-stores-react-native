@@ -23,11 +23,15 @@ export default class MapView extends Component {
       {
         stores.map(store =>
           <NativeMap.Marker key={store.id}
-            style={{ marginTop: 200 }}
+            style={{ paddingTop: 25 }}
             coordinate={{
               latitude: store.latLng.lat,
               longitude: store.latLng.lng,
-            }} onStartShouldSetResponder={ () => this.props.onOpenStore(store) }>
+            }} onStartShouldSetResponder={ (e) => {
+              if (e.nativeEvent.locationY < 50) {
+                this.props.onOpenStore(store);
+              }
+            }}>
             <SvgMarker scale={0.3}
               baseColor={themes[currentTheme].markerFirst}
               additionalColor={themes[currentTheme].markerSecond} />

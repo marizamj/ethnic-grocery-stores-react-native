@@ -26,11 +26,14 @@ export default function getStyles(theme) {
       borderBottomWidth: currentTheme.barStyle === 'dark-content' ? 1  : 0,
     },
 
+    headerIconContainer: {
+      marginTop: 8,
+      width: 45,
+    },
+
     headerIcon: {
       color: currentTheme.primaryLight,
       fontSize: 30,
-      marginTop: 8,
-      width: 45,
       textAlign: 'center',
     },
 

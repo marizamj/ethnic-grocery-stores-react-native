@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ScrollView, Image, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from '../Header';
 import themes from '../styles/themes';
@@ -11,8 +11,10 @@ export default class Search extends Component {
 
     return <View style={[ styles.flexOne, styles.primaryBackground ]}>
       <Header currentTheme={this.props.currentTheme} styles={this.props.styles}>
-        <Icon style={styles.headerIcon}
-          name="ios-arrow-back" onPress={() => this.props.navigator.pop()} />
+        <TouchableOpacity style={styles.headerIconContainer}
+          onPress={() => this.props.navigator.pop()}>
+          <Icon style={styles.headerIcon} name="ios-arrow-back"  />
+        </TouchableOpacity>
         <Text style={styles.headerText}>
           Settings
         </Text>
@@ -22,10 +24,9 @@ export default class Search extends Component {
       <ScrollView>
         <Text style={styles.settingsTitle}>Pick a theme</Text>
         {
-          Object.keys(themes).map((key, i) => <TouchableHighlight key={key}
-            style={styles.settingsItem} onPress={() => {
-              this.props.setTheme(key);
-            }}>
+          Object.keys(themes).map((key, i) => <TouchableOpacity key={key}
+            activeOpacity={1} style={styles.settingsItem}
+            onPress={() => { this.props.setTheme(key) }}>
             <Image style={styles.settingsItemImage} source={pictures[key]}>
               <View style={[
                 styles.settingsItemTextContainer,
@@ -37,7 +38,7 @@ export default class Search extends Component {
                 ]}>{themes[key].title}</Text>
               </View>
             </Image>
-          </TouchableHighlight>)
+          </TouchableOpacity>)
         }
       </ScrollView>
     </View>

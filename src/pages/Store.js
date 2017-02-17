@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from '../Header';
 import StoreMapView from './Store/StoreMapView';
@@ -36,8 +36,10 @@ export default class Store extends Component {
 
     return <View style={[ styles.flexOne, styles.primaryBackground ]}>
       <Header currentTheme={currentTheme} styles={this.props.styles}>
-        <Icon style={styles.headerIcon}
-          name="ios-arrow-back" onPress={() => navigator.pop()} />
+        <TouchableOpacity style={styles.headerIconContainer}
+          onPress={() => this.props.navigator.pop()}>
+          <Icon style={styles.headerIcon} name="ios-arrow-back"  />
+        </TouchableOpacity>
         <Text style={styles.headerText}>
           { store.title }
         </Text>

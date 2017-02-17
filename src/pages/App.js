@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Animated, Easing } from 'react-native';
+import { StyleSheet, View, Text, Animated, Easing, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from '../Header';
 import Menu from '../Menu';
@@ -79,17 +79,21 @@ export default class App extends Component {
 
     return <View style={styles.flexOne}>
       <Header currentTheme={currentTheme} styles={this.props.styles}>
-        <Icon style={styles.headerIcon} name="ios-menu"
-          onPress={() => this.setState({ menu: !menu })} />
-        <View>
-          <Text style={styles.headerText}
-            onPress={ () => this.setState({ showFilters: !showFilters }) }>
+        <TouchableOpacity style={styles.headerIconContainer}
+          onPress={() => this.setState({ menu: !menu })}>
+          <Icon style={styles.headerIcon} name="ios-menu" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={ () => this.setState({ showFilters: !showFilters }) }>
+          <Text style={styles.headerText}>
             { this.state.filter + ' ' }
             <Icon style={styles.headerDropdownIcon} name="ios-arrow-down" />
           </Text>
-        </View>
-        <Icon onPress={() => navigator.push({ title: 'Search' })}
-          style={styles.headerIcon} name="ios-search" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.headerIconContainer}
+          onPress={() => navigator.push({ title: 'Search' })}>
+          <Icon style={styles.headerIcon} name="ios-search" />
+        </TouchableOpacity>
       </Header>
 
       <View style={[ styles.flexOne, styles.flexRow ]}>
