@@ -18,14 +18,17 @@ const signInWithGoogle = () => {
     return manager.makeRequest('google', 'https://www.googleapis.com/plus/v1/people/me')
   }).then(resp => {
     const user = resp.data;
+    const imageUrl = user.image.url.match(/\?sz=\d+/) ?
+      user.image.url.replace(/\?sz=\d+/, '') : user.image.url;
+
     return {
       displayName: user.displayName,
       firstName: user.name.givenName,
       familyName: user.name.familyName,
-      imageUrl: user.image.url,
-      coverUrl: user.cover.coverPhoto.url,
       emails: user.emails,
       gender: user.gender,
+      coverUrl: user.cover.coverPhoto.url,
+      imageUrl,
     };
   }).catch(error => console.log(error));
 };

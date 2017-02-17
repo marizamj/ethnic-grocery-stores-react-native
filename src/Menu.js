@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class Menu extends Component {
@@ -7,27 +7,32 @@ export default class Menu extends Component {
     {
       title: 'Add store',
       icon: 'ios-add-circle-outline',
-      onPress: this.props.onAddStore
+      onPress: this.props.onAddStore,
+      needsAuth: false,
     },
     {
       title: 'About',
       icon: 'ios-information-circle-outline',
-      onPress: this.props.onAbout
+      onPress: this.props.onAbout,
+      needsAuth: false,
     },
     {
       title: 'Share',
       icon: 'ios-share-outline',
-      onPress: this.props.onShare
+      onPress: this.props.onShare,
+      needsAuth: false,
     },
     {
       title: 'Settings',
       icon: 'ios-settings-outline',
-      onPress: this.props.onSettings
+      onPress: this.props.onSettings,
+      needsAuth: false,
     },
     {
       title: 'Sign out',
       icon: 'ios-log-out',
-      onPress: this.props.onSignOut
+      onPress: this.props.onSignOut,
+      needsAuth: true,
     }
   ];
 
@@ -39,10 +44,13 @@ export default class Menu extends Component {
     return <View>
       <ScrollView>
       {
-        user && user.displayName ?
-          <View style={styles.user}>
-            <Text style={styles.menuSignInText}>Hola, {user.firstName}</Text>
-          </View>
+        user ?
+          <Image source={{ uri: user.coverUrl }} style={styles.userCover}>
+            <View style={styles.userContainer}>
+              <Image source={{ uri: user.imageUrl }} style={styles.userImage} />
+              <Text style={styles.userName}>Hola, {user.firstName}</Text>
+            </View>
+          </Image>
           :
           <TouchableOpacity onPress={() => this.props.onSignIn()}>
             <View style={styles.menuSignIn}>
@@ -54,14 +62,15 @@ export default class Menu extends Component {
 
       {
         this.menuFields.map( field =>
-          <TouchableOpacity key={field.title}
-            style={styles.menuListItem} onPress={field.onPress}>
-            <View style={[styles.flexRow, styles.flexOne]}>
-              <Icon name={field.icon} style={styles.menuListItemIcon}>
-              </Icon>
-              <Text style={styles.menuListItemText}>{field.title}</Text>
-            </View>
-          </TouchableOpacity>)
+          user || !field.needsAuth ?
+            <TouchableOpacity key={field.title}
+              style={styles.menuListItem} onPress={field.onPress}>
+              <View style={[styles.flexRow, styles.flexOne]}>
+                <Icon name={field.icon} style={styles.menuListItemIcon} />
+                <Text style={styles.menuListItemText}>{field.title}</Text>
+              </View>
+            </TouchableOpacity>
+          : null )
       }
       </ScrollView>
     </View>

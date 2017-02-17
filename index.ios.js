@@ -16,18 +16,18 @@ export default class EthnicGroceryStores extends Component {
     storesToShow: [],
     storeTypes: [],
     currentStore: null,
-    user: { displayName: '' },
+    user: null,
     currentTheme: 'caviar',
-    styles: {}
   };
 
   componentWillMount() {
-    AsyncStorage.getItem('currentTheme', (err, result) => {
-      if (!err && result)
-        this.setState({ currentTheme: result, styles: getStyles(result) });
-      else
-        this.setState({ styles: getStyles(this.state.currentTheme) });
-    });
+    AsyncStorage.multiGet(
+      [ 'currentTheme', 'user' ],
+      (err, [ [ k1, currentTheme ], [ k2, user ] ]) => {
+        if (err) return;
+        this.setState({ currentTheme, user: JSON.parse(user) });
+      }
+    );
   }
 
   componentDidMount() {
@@ -37,7 +37,6 @@ export default class EthnicGroceryStores extends Component {
 
   setTheme = theme => {
     this.setState({ currentTheme: theme });
-    this.setState({ styles: getStyles(theme) });
     AsyncStorage.setItem('currentTheme', theme);
   };
 
@@ -50,6 +49,8 @@ export default class EthnicGroceryStores extends Component {
 
   handleSignOut = () => {
     signOut();
+    this.setState({ user: null });
+    AsyncStorage.setItem('user', JSON.stringify(null));
   };
 
   onSubmitAddStore = form => {
@@ -67,7 +68,8 @@ export default class EthnicGroceryStores extends Component {
   };
 
   renderScene = (route, navigator) => {
-    const { currentTheme, styles, currentStore, storeTypes } = this.state;
+    const { currentTheme, currentStore, storeTypes } = this.state;
+    const styles = getStyles(currentTheme);
 
     let sceneToRender;
 
@@ -102,7 +104,7 @@ export default class EthnicGroceryStores extends Component {
         break;
 
       default:
-        sceneToRender = <App {...this.state} navigator={navigator}
+        sceneToRender = <App {...this.state} navigator={navigator} styles={styles}
           onOpenStore={ store => {
             this.setState({ currentStore: store });
             navigator.push({ title: 'Store' });

@@ -98,14 +98,38 @@ export default function getStyles(theme) {
 
     menuSignInText: {
       color: currentTheme.primaryLight,
+      backgroundColor: 'transparent',
       marginLeft: 10,
       lineHeight: 75,
       fontSize: 20,
     },
 
-    user: {
-      backgroundColor: currentTheme.additionalDark,
-      height: 75,
+    userCover: {
+      height: 110,
+    },
+
+    userContainer: {
+      height: 110,
+      backgroundColor: 'rgba(0,0,0,0.3)',
+    },
+
+    userImage: {
+      height: 60,
+      width: 60,
+      borderRadius: 30,
+      marginLeft: 10,
+      marginTop: 10
+    },
+
+    userName: {
+      color: 'white',
+      backgroundColor: 'transparent',
+      fontSize: 20,
+      marginLeft: 10,
+      marginTop: 5,
+      textShadowColor: 'black',
+      textShadowOffset: { width: 1, height: 1 },
+      textShadowRadius: 5,
     },
 
     filters: {
