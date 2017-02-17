@@ -83,6 +83,20 @@ export default {
     markerSecond: '#7ca000'
   },
 
+  mintChocolate: {
+    barStyle: 'dark-content',
+    title: 'Mint chocolate',
+    primaryLight: '#391416',
+    primaryDark: '#cbecd9',
+    additionalLight: '#93d2ad',
+    additionalDark: '#96696d',
+    borders: '#93d2ad',
+    textLighter: '#b4cbbe',
+    textDarker: '#b4cbbe',
+    markerFirst: '#4e2529',
+    markerSecond: '#79b994'
+  },
+
   tiramisu: {
     barStyle: 'light-content',
     title: 'Tiramisu',

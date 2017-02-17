@@ -8,5 +8,6 @@ export default {
   blueberryCheesecake: require('../../images/blueberrycheesecake3-crop.jpg'),
   caviar: require('../../images/vodka-crop.jpg'),
   greekSalad: require('../../images/greeksalad2-crop.jpg'),
+  mintChocolate: require('../../images/mintchocolate.jpg'),
   pinaColada: require('../../images/pinacolada.jpg')
 }

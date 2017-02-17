@@ -22,7 +22,7 @@ export default function getStyles(theme) {
       paddingTop: 23,
       flexDirection: 'row',
       justifyContent: 'space-between',
-      borderColor: '#cccccc',
+      borderColor: currentTheme.borders,
       borderBottomWidth: currentTheme.barStyle === 'dark-content' ? 1  : 0,
     },
 
@@ -148,7 +148,7 @@ export default function getStyles(theme) {
       flexDirection: 'row',
       justifyContent: 'space-between',
       paddingHorizontal: 15,
-      borderColor: '#cccccc',
+      borderColor: currentTheme.borders,
       borderWidth: currentTheme.barStyle === 'dark-content' ? 1  : 0,
     },
 
@@ -159,6 +159,7 @@ export default function getStyles(theme) {
     filtersHeaderBtn: {
       color: currentTheme.primaryLight,
       lineHeight: 50,
+      height: 45,
       fontSize: 18,
     },
 
