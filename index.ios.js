@@ -18,6 +18,7 @@ export default class EthnicGroceryStores extends Component {
     currentStore: null,
     user: null,
     currentTheme: 'caviar',
+    filter: 'All stores',
   };
 
   componentWillMount() {
@@ -38,6 +39,14 @@ export default class EthnicGroceryStores extends Component {
   setTheme = theme => {
     this.setState({ currentTheme: theme });
     AsyncStorage.setItem('currentTheme', theme);
+  };
+
+  changeFilter = filter =>  {
+    const filteredStoresToShow = filter !== 'All stores' ?
+      this.state.stores.filter(store => store.type.match(filter))
+      : this.state.stores;
+
+    this.setState({ filter, storesToShow: filteredStoresToShow });
   };
 
   handleSignIn = () => {
@@ -109,8 +118,9 @@ export default class EthnicGroceryStores extends Component {
             this.setState({ currentStore: store });
             navigator.push({ title: 'Store' });
           }}
-          onSignIn={() => this.handleSignIn()}
-          onSignOut={() => this.handleSignOut()} />;
+          onChangeFilter={this.changeFilter}
+          onSignIn={this.handleSignIn}
+          onSignOut={this.handleSignOut} />;
     }
 
     return sceneToRender;

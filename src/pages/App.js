@@ -10,7 +10,7 @@ export default class App extends Component {
   state = {
     menu: false,
     showFilters: false,
-    filter: 'All stores',
+    filter: this.props.filter,
     stores: this.props.stores,
     storesToShow: this.props.storesToShow,
     storeTypes: this.props.storeTypes,
@@ -20,8 +20,8 @@ export default class App extends Component {
   animatedMenuValue = new Animated.Value(this.state.menu ? 1 : 0);
   animatedFiltersValue = new Animated.Value(this.state.showFilters ? 1 : 0);
 
-  componentWillReceiveProps({ stores, storesToShow, storeTypes, user }) {
-    this.setState({ stores, storesToShow, storeTypes, user });
+  componentWillReceiveProps({ stores, storesToShow, storeTypes, user, filter }) {
+    this.setState({ stores, storesToShow, storeTypes, user, filter });
   }
 
   componentWillUpdate(_, nextState) {
@@ -47,19 +47,6 @@ export default class App extends Component {
   closeMenuAndPushRoute = route => {
     this.setState({ menu: false });
     this.props.navigator.push({ title: route });
-  };
-
-  changeFilter = filter =>  {
-    const filteredStoresToShow = filter === 'All stores' ?
-      this.state.stores
-      :
-      this.state.stores.filter(store => store.type.match(filter));
-
-    this.setState({
-      filter,
-      showFilters: false,
-      storesToShow: filteredStoresToShow
-    });
   };
 
   render() {
@@ -120,7 +107,10 @@ export default class App extends Component {
         <Filters styles={this.props.styles} storeTypes={storeTypes}
           filter={filter} onCloseFilter={ () =>
             this.setState({ showFilters: false })
-          } onChangeFilter={this.changeFilter} />
+          } onChangeFilter={ filter => {
+            this.props.onChangeFilter(filter);
+            this.setState({ showFilters: false });
+          }} />
       </Animated.View>
 
     </View>
