@@ -7,7 +7,7 @@ import Settings from './src/pages/Settings';
 import Store from './src/pages/Store';
 import AddStore from './src/pages/AddStore';
 import getStyles from './src/styles/styles';
-import { loadStoreTypes, loadStores } from './src/lib/firebaseLib';
+import { loadStoreTypes, loadStores, pushStoreToFirebase } from './src/lib/firebaseLib';
 import { signInWithGoogle, signOut } from './src/lib/OAuthLib';
 
 export default class EthnicGroceryStores extends Component {
@@ -63,16 +63,22 @@ export default class EthnicGroceryStores extends Component {
   };
 
   onSubmitAddStore = form => {
-    firebasePush('newStores', form, err => {
-      if (err) {
-        AlertIOS.alert('Oh no!', 'Something went wrong. Please, try again.');
+    const { user } = this.state;
 
-      } else {
-        AlertIOS.alert(
-          'Thank you!',
-          'Your form was successfully submitted! We will check it up and add to our database as soon as possible.'
-        );
-      }
+    pushStoreToFirebase({
+      ...form,
+      senderName: user.displayName,
+      senderEmail: user.emails.map(email => email.value).join(', ')
+    })
+    .then(response => {
+      AlertIOS.alert(
+        'Thank you!',
+        'Your form was successfully submitted! We will check it up and add to our database as soon as possible.'
+      );
+    })
+    .catch(error => {
+      AlertIOS.alert('Oh no!', 'Something went wrong. Please, try again.');
+      console.log(error);
     });
   };
 

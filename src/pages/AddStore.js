@@ -34,7 +34,7 @@ export default class AddStore extends Component {
 
   handleSubmit = () => {
     const form = this.form;
-    form.type = this.state.checkedTypes;
+    form.type = this.state.checkedTypes.map(type => ({ name: type }));
 
     const requiredFields =
       form.title && form.title.trim() &&
@@ -43,7 +43,8 @@ export default class AddStore extends Component {
 
     if (requiredFields) {
       this.props.onSubmitAddStore(form);
-
+      this.props.navigator.push('Home');
+      
     } else {
       this.setState({
         message: 'At least title, address and type should be filled. Please, try again.'

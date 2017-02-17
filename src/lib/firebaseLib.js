@@ -25,7 +25,11 @@ const loadStores = f => {
   });
 };
 
+const pushStoreToFirebase = form =>
+  firestack.database.ref('newStores').push(form);
+
 export {
   loadStoreTypes,
   loadStores,
+  pushStoreToFirebase
 };
