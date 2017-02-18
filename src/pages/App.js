@@ -18,6 +18,7 @@ export default class App extends Component {
   };
 
   animatedMenuValue = new Animated.Value(this.state.menu ? 1 : 0);
+  animatedMenuShadowValue = new Animated.Value(this.state.menu ? 1 : 0);
   animatedFiltersValue = new Animated.Value(this.state.showFilters ? 1 : 0);
 
   componentWillReceiveProps({ stores, storesToShow, storeTypes, user, filter }) {
@@ -27,10 +28,14 @@ export default class App extends Component {
   componentWillUpdate(_, nextState) {
     const { menu, showFilters } = this.state;
 
-    if (nextState.menu !== menu)
+    if (nextState.menu !== menu) {
       this.toggleAnimatedWindow(menu, this.animatedMenuValue, 200);
-    if (nextState.showFilters !== showFilters)
+      this.toggleAnimatedWindow(menu, this.animatedMenuShadowValue, 200);
+    }
+
+    if (nextState.showFilters !== showFilters) {
       this.toggleAnimatedWindow(showFilters, this.animatedFiltersValue, 200);
+    }
   }
 
   toggleAnimatedWindow = (stateValue, animatedValue, duration) => {
@@ -54,9 +59,14 @@ export default class App extends Component {
     const { currentTheme, navigator } = this.props;
     const { menu, stores, storesToShow, storeTypes, user, filter, showFilters } = this.state;
 
-    const menuWidth = this.animatedMenuValue.interpolate({
+    const menuMarginLeft = this.animatedMenuValue.interpolate({
       inputRange: [ 0, 1 ],
-      outputRange: [ 0, 250 ]
+      outputRange: [ -250, 0 ]
+    });
+
+    const menuShadowOpacity = this.animatedMenuValue.interpolate({
+      inputRange: [ 0, 1 ],
+      outputRange: [ 0, 0.3 ]
     });
 
     const filtersHeight = this.animatedFiltersValue.interpolate({
@@ -91,7 +101,9 @@ export default class App extends Component {
             if (menu) this.setState({ menu: false });
           }} onOpenStore={ store => this.props.onOpenStore(store) } />
 
-        <Animated.View style={[{ width: menuWidth }, styles.menu]}>
+        <Animated.View style={[ styles.menuShadow, { opacity: menuShadowOpacity } ]} />
+
+        <Animated.View style={[ { marginLeft: menuMarginLeft }, styles.menu ]}>
           <Menu styles={this.props.styles} user={this.props.user}
           onAbout={ () => this.closeMenuAndPushRoute('About') }
           onSettings={ () => this.closeMenuAndPushRoute('Settings') }

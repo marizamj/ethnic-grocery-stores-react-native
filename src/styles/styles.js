@@ -56,12 +56,18 @@ export default function getStyles(theme) {
     menu: {
       backgroundColor: currentTheme.primaryLight,
       position: 'absolute',
+      width: 250,
       top: 0,
       bottom: 0,
-      shadowColor: 'slategrey',
-      shadowOffset: { width: 0, height: 150 },
-      shadowRadius: 100,
-      shadowOpacity: 1,
+    },
+
+    menuShadow: {
+      backgroundColor: '#000000',
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
     },
 
     menuListItem: {
