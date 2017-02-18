@@ -249,7 +249,7 @@ export default function getStyles(theme) {
     },
 
     aboutIcons: {
-      color: currentTheme.textLighter,
+      color: currentTheme.links,
       fontSize: 40,
       marginHorizontal: 10
     },
@@ -431,6 +431,11 @@ export default function getStyles(theme) {
       textAlign: 'center',
       marginTop: 15,
       marginHorizontal: 15,
-    }
+    },
+
+    pLink: {
+      color: currentTheme.links,
+      textDecorationLine: 'underline',
+    },
   });
 }

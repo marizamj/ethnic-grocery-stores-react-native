@@ -97,11 +97,14 @@ export default class App extends Component {
 
         <MapView stores={storesToShow} styles={this.props.styles}
           currentTheme={currentTheme}
-          onCloseMenu={ () => {
-            if (menu) this.setState({ menu: false });
-          }} onOpenStore={ store => this.props.onOpenStore(store) } />
+          onOpenStore={ store => this.props.onOpenStore(store) } />
 
-        <Animated.View style={[ styles.menuShadow, { opacity: menuShadowOpacity } ]} />
+        {
+          menu ?
+            <Animated.View style={[ styles.menuShadow, { opacity: menuShadowOpacity } ]}
+              onStartShouldSetResponder={ () => this.setState({ menu: false }) } />
+            : null
+        }
 
         <Animated.View style={[ { marginLeft: menuMarginLeft }, styles.menu ]}>
           <Menu styles={this.props.styles} user={this.props.user}

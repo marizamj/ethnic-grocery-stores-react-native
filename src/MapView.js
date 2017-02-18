@@ -10,10 +10,7 @@ export default class MapView extends Component {
     const { stores, currentTheme } = this.props;
 
     return <NativeMap style={styles.flexOne}
-      onStartShouldSetResponder={ e => {
-        if (e.nativeEvent.locationX > 250)
-          this.props.onCloseMenu();
-      }} initialRegion={{
+      initialRegion={{
         latitude: 52.366017,
         longitude: 4.893490,
         latitudeDelta: 0.05,

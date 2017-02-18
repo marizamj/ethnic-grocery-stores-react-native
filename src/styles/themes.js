@@ -10,7 +10,8 @@ export default {
     textLighter: '#6b8551',
     textDarker: '#202816',
     markerFirst: '#5e9246',
-    markerSecond: '#d41800'
+    markerSecond: '#d41800',
+    links: '#bd1500',
   },
 
   sushi: {
@@ -24,7 +25,8 @@ export default {
     textLighter: '#894115',
     textDarker: '#2e2d33',
     markerFirst: '#ff9382',
-    markerSecond: '#abc176'
+    markerSecond: '#abc176',
+    links: '#894115',
   },
 
   maki: {
@@ -38,7 +40,8 @@ export default {
     textLighter: '#fe8b5e',
     textDarker: '#e9e2d0',
     markerFirst: '#a5cc5a',
-    markerSecond: '#f05922'
+    markerSecond: '#f05922',
+    links: '#fe8b5e',
   },
 
   borsch: {
@@ -52,7 +55,8 @@ export default {
     textLighter: '#6f1713',
     textDarker: '#2f0103',
     markerFirst: '#b51e01',
-    markerSecond: '#368945'
+    markerSecond: '#368945',
+    links: '#368945',
   },
 
   greekSalad: {
@@ -66,7 +70,8 @@ export default {
     textLighter: '#2f6810',
     textDarker: '#000000',
     markerFirst: '#ab6984',
-    markerSecond: '#519d27'
+    markerSecond: '#519d27',
+    links: '#df1d04',
   },
 
   caviar: {
@@ -80,7 +85,8 @@ export default {
     textLighter: '#615f60',
     textDarker: '#000000',
     markerFirst: '#615f60',
-    markerSecond: '#7ca000'
+    markerSecond: '#7ca000',
+    links: '#7ca000',
   },
 
   mintChocolate: {
@@ -94,7 +100,8 @@ export default {
     textLighter: '#b4cbbe',
     textDarker: '#b4cbbe',
     markerFirst: '#4e2529',
-    markerSecond: '#79b994'
+    markerSecond: '#79b994',
+    links: '#c693aa',
   },
 
   tiramisu: {
@@ -108,7 +115,8 @@ export default {
     textLighter: '#894115',
     textDarker: '#170c0a',
     markerFirst: '#bf905c',
-    markerSecond: '#9b5231'
+    markerSecond: '#9b5231',
+    links: '#894115',
   },
 
   blueberryCheesecake: {
@@ -122,7 +130,8 @@ export default {
     textLighter: '#53293f',
     textDarker: '#0b100a',
     markerFirst: '#c52751',
-    markerSecond: '#853a60'
+    markerSecond: '#853a60',
+    links: '#c52751',
   },
 
   lavendelMuffin: {
@@ -136,7 +145,8 @@ export default {
     textLighter: '#584392',
     textDarker: '#22134a',
     markerFirst: '#e7a65e',
-    markerSecond: '#744ba7'
+    markerSecond: '#744ba7',
+    links: '#c97e2d',
   },
 
   pinaColada: {
@@ -150,7 +160,8 @@ export default {
     textLighter: '#ededed',
     textDarker: '#ffffff',
     markerFirst: '#e5ca13',
-    markerSecond: '#74bb1a'
+    markerSecond: '#74bb1a',
+    links: '#e5ca13',
   },
 
   // originalTheme: {

@@ -24,7 +24,12 @@ export default class OpenLink extends Component {
   render() {
     const styles = StyleSheet.create(this.props.styles);
 
-    return <TouchableOpacity onPress={this.onUrlPress}>
+    return this.props.inline ?
+      <Text onPress={this.onUrlPress}>
+        {this.props.children}
+      </Text>
+      :
+      <TouchableOpacity onPress={this.onUrlPress}>
       {
         this.props.children ?
           this.props.children
@@ -33,6 +38,6 @@ export default class OpenLink extends Component {
             { this.props.url }
           </Text>
       }
-    </TouchableOpacity>
+      </TouchableOpacity>
   }
 };

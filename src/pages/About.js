@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from '../Header';
+import OpenLink from '../OpenLink';
+
+const socialIcons = [
+  { name: "logo-facebook", url: "https://www.facebook.com/marie.zamzhitskaya" },
+  { name: "logo-github", url: "https://github.com/marizamj" },
+  { name: "logo-linkedin", url: "https://www.linkedin.com/in/zamzhitskaya/" },
+  { name: "ios-mail", url: "mailto:marizamj@gmail.com" },
+];
 
 export default class About extends Component {
   render() {
@@ -34,14 +42,24 @@ export default class About extends Component {
         <Text style={styles.p}>
           I created this project while learning how to code.
           It is powered by React Native and uses Firebase to
-          store data. You also can find (and star ★) it on my
-          Github page.
+          store data. You also can
+          <OpenLink url="https://github.com/marizamj/ethnic-grocery-stores"
+          inline={true}> <Text style={styles.pLink}>
+          find (and star ★)
+          </Text> </OpenLink>it on my Github page.
+        </Text>
+        <Text style={styles.p}>
+          If you have any comments or suggestions (or even if
+          you want to hire me), please contact me via following
+          links:
         </Text>
         <View style={[styles.flexRow, { marginTop: 30, justifyContent: 'center' }]}>
-          <Icon style={styles.aboutIcons} name="logo-facebook" />
-          <Icon style={styles.aboutIcons} name="logo-github" />
-          <Icon style={styles.aboutIcons} name="logo-linkedin" />
-          <Icon style={styles.aboutIcons} name="ios-mail" />
+        {
+          socialIcons.map(icon =>
+            <OpenLink key={icon.name} url={icon.url}>
+              <Icon style={styles.aboutIcons} name={icon.name} />
+            </OpenLink>)
+        }
         </View>
       </ScrollView>
     </View>
