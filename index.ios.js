@@ -7,7 +7,7 @@ import Settings from './src/pages/Settings';
 import Store from './src/pages/Store';
 import AddStore from './src/pages/AddStore';
 import getStyles from './src/styles/styles';
-import { loadStoreTypes, loadStores, pushStoreToFirebase } from './src/lib/firebaseLib';
+import { pushStoreToFirebase, loadFromJson } from './src/lib/firebaseLib';
 import { signInWithGoogle, signOut } from './src/lib/OAuthLib';
 
 export default class EthnicGroceryStores extends Component {
@@ -32,8 +32,11 @@ export default class EthnicGroceryStores extends Component {
   }
 
   componentDidMount() {
-    loadStoreTypes(storeTypes => this.setState({ storeTypes }));
-    loadStores(stores => this.setState({ stores, storesToShow: stores }));
+    loadFromJson()
+    .then(data => {
+      const { stores, storeTypes } = data;
+      this.setState({ stores, storeTypes, storesToShow: stores });
+    });
   }
 
   setTheme = theme => {

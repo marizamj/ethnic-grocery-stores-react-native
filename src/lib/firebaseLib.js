@@ -28,8 +28,20 @@ const loadStores = f => {
 const pushStoreToFirebase = form =>
   firestack.database.ref('newStores').push(form);
 
+const loadFromJson = () => {
+  return fetch('https://raw.githubusercontent.com/marizamj/ethnic-grocery-stores-database/master/database.json')
+  .then(response => response.json())
+  .then(json => ({
+      stores: toArrayStores(json.stores),
+      storeTypes: toArrayTypes(json.storeTypes)
+    })
+  )
+  .catch(error => console.log(error));
+};
+
 export {
   loadStoreTypes,
   loadStores,
-  pushStoreToFirebase
+  pushStoreToFirebase,
+  loadFromJson
 };
