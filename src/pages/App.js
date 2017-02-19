@@ -10,20 +10,11 @@ export default class App extends Component {
   state = {
     menu: false,
     showFilters: false,
-    filter: this.props.filter,
-    stores: this.props.stores,
-    storesToShow: this.props.storesToShow,
-    storeTypes: this.props.storeTypes,
-    user: this.props.user,
   };
 
   animatedMenuValue = new Animated.Value(this.state.menu ? 1 : 0);
   animatedMenuShadowValue = new Animated.Value(this.state.menu ? 1 : 0);
   animatedFiltersValue = new Animated.Value(this.state.showFilters ? 1 : 0);
-
-  componentWillReceiveProps({ stores, storesToShow, storeTypes, user, filter }) {
-    this.setState({ stores, storesToShow, storeTypes, user, filter });
-  }
 
   componentWillUpdate(_, nextState) {
     const { menu, showFilters } = this.state;
@@ -56,8 +47,18 @@ export default class App extends Component {
 
   render() {
     const styles = StyleSheet.create(this.props.styles);
-    const { currentTheme, navigator } = this.props;
-    const { menu, stores, storesToShow, storeTypes, user, filter, showFilters } = this.state;
+    const { menu, showFilters } = this.state;
+    const {
+      currentTheme,
+      currentPosition,
+      storesToShow,
+      navigator,
+      initialRegion,
+      storeTypes,
+      stores,
+      filter,
+      user
+    } = this.props;
 
     const menuMarginLeft = this.animatedMenuValue.interpolate({
       inputRange: [ 0, 1 ],
@@ -96,7 +97,8 @@ export default class App extends Component {
       <View style={[ styles.flexOne, styles.flexRow ]}>
 
         <MapView stores={storesToShow} styles={this.props.styles}
-          currentTheme={currentTheme}
+          currentTheme={currentTheme} currentPosition={currentPosition}
+          initialRegion={initialRegion}
           onOpenStore={ store => this.props.onOpenStore(store, navigator) } />
 
         {
@@ -107,13 +109,12 @@ export default class App extends Component {
         }
 
         <Animated.View style={[ { marginLeft: menuMarginLeft }, styles.menu ]}>
-          <Menu styles={this.props.styles} user={this.props.user}
-          onAbout={ () => this.closeMenuAndPushRoute('About') }
-          onSettings={ () => this.closeMenuAndPushRoute('Settings') }
-          onSignIn={ this.props.onSignIn }
-          onSignOut={ this.props.onSignOut }
-          onShare={ () => {  }}
-          onAddStore={ () => this.closeMenuAndPushRoute('AddStore') } />
+          <Menu styles={this.props.styles} user={user}
+            onAbout={ () => this.closeMenuAndPushRoute('About') }
+            onSettings={ () => this.closeMenuAndPushRoute('Settings') }
+            onSignIn={ this.props.onSignIn }
+            onSignOut={ this.props.onSignOut }
+            onAddStore={ () => this.closeMenuAndPushRoute('AddStore') } />
         </Animated.View>
 
       </View>

@@ -17,12 +17,6 @@ export default class Menu extends Component {
       needsAuth: false,
     },
     {
-      title: 'Share',
-      icon: 'ios-share-outline',
-      onPress: this.props.onShare,
-      needsAuth: false,
-    },
-    {
       title: 'Settings',
       icon: 'ios-settings-outline',
       onPress: this.props.onSettings,

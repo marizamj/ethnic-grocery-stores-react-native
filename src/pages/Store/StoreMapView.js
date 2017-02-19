@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import NativeMap from 'react-native-maps';
-import SvgMarker from '../../SvgMarker';
+import { SvgMarker } from '../../SvgMarker';
 import themes from '../../styles/themes';
 
 export default class StoreMapView extends Component {
