@@ -26,7 +26,14 @@ export default class EthnicGroceryStores extends Component {
       [ 'currentTheme', 'user' ],
       (err, [ [ k1, currentTheme ], [ k2, user ] ]) => {
         if (err) return;
-        this.setState({ currentTheme, user: JSON.parse(user) });
+
+        if (user) {
+          this.setState({ user: JSON.parse(user) });
+        }
+
+        if (currentTheme) {
+          this.setState({ currentTheme });
+        }
       }
     );
   }
