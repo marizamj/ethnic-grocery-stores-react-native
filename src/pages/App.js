@@ -83,7 +83,7 @@ export default class App extends Component {
         <TouchableOpacity
           onPress={ () => this.setState({ showFilters: !showFilters }) }>
           <Text style={styles.headerText}>
-            { this.state.filter + ' ' }
+            { filter + ' ' }
             <Icon style={styles.headerDropdownIcon} name="ios-arrow-down" />
           </Text>
         </TouchableOpacity>
@@ -97,7 +97,7 @@ export default class App extends Component {
 
         <MapView stores={storesToShow} styles={this.props.styles}
           currentTheme={currentTheme}
-          onOpenStore={ store => this.props.onOpenStore(store) } />
+          onOpenStore={ store => this.props.onOpenStore(store, navigator) } />
 
         {
           menu ?

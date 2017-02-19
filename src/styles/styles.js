@@ -169,8 +169,14 @@ export default function getStyles(theme) {
       fontSize: 18,
     },
 
-    search: {
-      borderColor: currentTheme.borders,
+    searchInputContainer: {
+      borderColor: currentTheme.primaryDark,
+      borderBottomWidth: 1,
+    },
+
+    searchInput: {
+      borderColor: currentTheme.primaryDark,
+      color: currentTheme.textDarker,
       height: 50,
       marginVertical: 15,
       marginHorizontal: 20,
@@ -180,17 +186,39 @@ export default function getStyles(theme) {
       borderWidth: 1,
     },
 
-    searchResultsItem: {
-      borderColor: currentTheme.borders,
-      height: 50,
-      marginHorizontal: 20,
-      borderStyle: 'solid',
-      borderTopColor: 'transparent',
-      borderWidth: 1,
+    searchHeader: {
+      color: currentTheme.primaryLight,
+      backgroundColor: currentTheme.primaryDark,
+      fontSize: 20,
+      paddingHorizontal: 20,
+      paddingVertical: 5,
+    },
+
+    searchStore: {
+      paddingVertical: 10,
+      paddingHorizontal: 20,
+      borderBottomWidth: 1,
+      borderColor: currentTheme.primaryDark,
+    },
+
+    searchStoreTitle: {
+      color: currentTheme.additionalDark,
+      fontSize: 22,
+      marginBottom: 5,
+    },
+
+    searchStoreType: {
+      color: currentTheme.textDarker,
+      fontSize: 18,
+    },
+
+    searchStoreAddress: {
+      color: currentTheme.textLighter,
+      fontSize: 18,
     },
 
     firstItem: {
-      borderTopColor: currentTheme.borders,
+      borderTopWidth: 1,
     },
 
     storeMap: {

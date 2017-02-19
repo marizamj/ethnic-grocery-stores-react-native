@@ -59,6 +59,11 @@ export default class EthnicGroceryStores extends Component {
     });
   };
 
+  onOpenStore = (store, navigator) => {
+    this.setState({ currentStore: store });
+    navigator.push({ title: 'Store' });
+  };
+
   handleSignOut = () => {
     signOut();
     this.setState({ user: null });
@@ -86,7 +91,7 @@ export default class EthnicGroceryStores extends Component {
   };
 
   renderScene = (route, navigator) => {
-    const { currentTheme, currentStore, storeTypes } = this.state;
+    const { currentTheme, currentStore, storeTypes, stores } = this.state;
     const styles = getStyles(currentTheme);
 
     let sceneToRender;
@@ -94,7 +99,8 @@ export default class EthnicGroceryStores extends Component {
     switch (route.title) {
       case 'Search':
         sceneToRender = <Search styles={styles} navigator={navigator}
-          currentTheme={currentTheme} />;
+          currentTheme={currentTheme} stores={stores}
+          onOpenStore={this.onOpenStore} />;
         break;
 
       case 'About':
@@ -123,10 +129,7 @@ export default class EthnicGroceryStores extends Component {
 
       default:
         sceneToRender = <App {...this.state} navigator={navigator} styles={styles}
-          onOpenStore={ store => {
-            this.setState({ currentStore: store });
-            navigator.push({ title: 'Store' });
-          }}
+          onOpenStore={this.onOpenStore}
           onChangeFilter={this.changeFilter}
           onSignIn={this.handleSignIn}
           onSignOut={this.handleSignOut} />;
