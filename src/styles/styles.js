@@ -283,7 +283,8 @@ export default function getStyles(theme) {
     aboutIcons: {
       color: currentTheme.links,
       fontSize: 40,
-      marginHorizontal: 10
+      marginHorizontal: 10,
+      marginBottom: 20,
     },
 
     settingsTitle: {

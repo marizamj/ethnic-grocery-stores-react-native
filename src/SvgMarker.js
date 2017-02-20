@@ -52,8 +52,8 @@ class AnimatedUserLocation extends Component {
 
     return <Animated.View style={{ bottom: 10, transform: [{ scale }] }}>
       <Svg height="20" width="20">
-        <Circle cx="10" cy="10" r={10} fill={additionalColor} />
-        <Circle cx="10" cy="10" r={5} fill={baseColor} />
+        <Circle cx="10" cy="10" r="10" fill={additionalColor} />
+        <Circle cx="10" cy="10" r="5" fill={baseColor} />
       </Svg>
     </Animated.View>
   }

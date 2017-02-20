@@ -1,54 +1,47 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, AlertIOS } from 'react-native';
 import NativeMap from 'react-native-maps';
 import { SvgMarker, AnimatedUserLocation } from './SvgMarker';
 import themes from './styles/themes';
-import { isInAmsterdam } from './lib/geolocationLib';
+import { isInAmsterdam, amsterdamRegion } from './lib/geolocationLib';
 
 export default class MapView extends Component {
   state = {
-    initialRegion: {
-      latitude: 52.366017,
-      longitude: 4.893490,
-      latitudeDelta: 0.05,
-      longitudeDelta: 0.05,
-    },
-
+    initialRegion: null,
     currentPosition: null,
+    positionChecked: false,
   }
 
   componentWillMount() {
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        this.setState({
-          currentPosition: position.coords,
-          initialRegion: {
-            ...position.coords,
-            latitudeDelta: 0.05,
-            longitudeDelta: 0.05
-          }
-        }, this.checkPosition);
-      }
-    );
-
     navigator.geolocation.watchPosition(
       position => {
-        this.setState({ currentPosition: position.coords });
+        this.setState({ currentPosition: position.coords }, () => {
+          if (!this.state.positionChecked) {
+            this.checkPosition();
+            this.setState({ positionChecked: true });
+          }
+        });
       }
     );
   }
 
   checkPosition = () => {
-    setTimeout(() => {
-      if (!isInAmsterdam(this.state.currentPosition)) {
-        this.setState({ initialRegion: { latitude: 52.366017, longitude: 4.893490 } });
+    if (!isInAmsterdam(this.state.currentPosition)) {
+      this.setState({ initialRegion: amsterdamRegion });
 
-        AlertIOS.alert(
-          'This app shows only stores located in Amsterdam',
-          'We noticed that you are too far away, so we\'ll show you Amsterdam area and hope to see you around here soon :-)'
-        )
-      }
-    }, 0);
+      AlertIOS.alert(
+        'This app shows only stores located in Amsterdam',
+        'We noticed that you are too far away, so we\'ll show you Amsterdam area and hope to see you around here soon :-)'
+      )
+    } else {
+      this.setState({
+        initialRegion: {
+          ...this.state.currentPosition,
+          latitudeDelta: 0.05,
+          longitudeDelta: 0.05
+        }
+      });
+    }
   };
 
   render() {
@@ -66,7 +59,7 @@ export default class MapView extends Component {
             longitude: currentPosition.longitude
           }}>
             <AnimatedUserLocation baseColor={themes[currentTheme].markerFirst}
-            additionalColor={themes[currentTheme].markerSecond} />
+              additionalColor={themes[currentTheme].markerSecond} />
           </NativeMap.Marker>
         : null
       }
