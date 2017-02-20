@@ -259,6 +259,10 @@ export default function getStyles(theme) {
       paddingLeft: 40,
     },
 
+    storeHours: {
+      marginBottom: 20,
+    },
+
     storeHoursDay: {
       flexDirection: 'row',
       paddingLeft: 40,

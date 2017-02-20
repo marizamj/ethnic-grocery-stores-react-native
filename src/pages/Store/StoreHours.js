@@ -8,7 +8,7 @@ export default class StoreHours extends Component {
     const { store } = this.props;
     const styles = StyleSheet.create(this.props.styles);
 
-    return <View>
+    return <View style={styles.storeHours}>
       <Text style={styles.storeFieldTitle}>Hours:</Text>
       {
         weekDays.map(day =>
