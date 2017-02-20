@@ -1,52 +1,11 @@
 import React, { Component } from 'react';
-import { AlertIOS } from 'react-native';
 import NativeMap from 'react-native-maps';
 import { SvgMarker, AnimatedUserLocation } from '../../globalComponents/SvgMarker';
 import themes from '../../themes/themes';
-import { isInAmsterdam, amsterdamRegion } from '../../lib/geolocationLib';
 
 export default class MapView extends Component {
-  state = {
-    initialRegion: null,
-    currentPosition: null,
-    positionChecked: false,
-  }
-
-  componentWillMount() {
-    navigator.geolocation.watchPosition(
-      position => {
-        this.setState({ currentPosition: position.coords }, () => {
-          if (!this.state.positionChecked) {
-            this.checkPosition();
-            this.setState({ positionChecked: true });
-          }
-        });
-      }
-    );
-  }
-
-  checkPosition = () => {
-    if (!isInAmsterdam(this.state.currentPosition)) {
-      this.setState({ initialRegion: amsterdamRegion });
-
-      AlertIOS.alert(
-        'This app shows only stores located in Amsterdam',
-        'We noticed that you are too far away, so we\'ll show you Amsterdam area and hope to see you around here soon :-)'
-      )
-    } else {
-      this.setState({
-        initialRegion: {
-          ...this.state.currentPosition,
-          latitudeDelta: 0.05,
-          longitudeDelta: 0.05
-        }
-      });
-    }
-  };
-
   render() {
-    const { stores, currentTheme } = this.props;
-    const { currentPosition, initialRegion } = this.state;
+    const { stores, currentTheme, initialRegion, currentPosition } = this.props;
 
     return <NativeMap style={{ flex: 1 }}
       initialRegion={initialRegion}>

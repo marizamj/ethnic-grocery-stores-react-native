@@ -52,6 +52,7 @@ export default class App extends Component {
     const {
       currentTheme,
       currentPosition,
+      positionChecked,
       storesToShow,
       navigator,
       initialRegion,

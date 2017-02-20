@@ -8,6 +8,7 @@ import Store from './src/pages/Store/index';
 import AddStore from './src/pages/AddStore/index';
 import { pushStoreToFirebase, loadFromJson } from './src/lib/firebaseLib';
 import { signInWithGoogle, signOut } from './src/lib/OAuthLib';
+import { amsterdamRegion, checkPosition } from './src/lib/geolocationLib';
 
 export default class EthnicGroceryStores extends Component {
   state = {
@@ -18,13 +19,19 @@ export default class EthnicGroceryStores extends Component {
     user: null,
     currentTheme: 'caviar',
     filter: 'All stores',
+    currentPosition: null,
+    positionChecked: false,
+    initialRegion: amsterdamRegion,
   };
 
   componentWillMount() {
     AsyncStorage.multiGet(
       [ 'currentTheme', 'user' ],
       (err, [ [ k1, currentTheme ], [ k2, user ] ]) => {
-        if (err) return;
+        if (err) {
+          console.log(err);
+          return;
+        }
 
         if (user) {
           this.setState({ user: JSON.parse(user) });
@@ -33,6 +40,22 @@ export default class EthnicGroceryStores extends Component {
         if (currentTheme) {
           this.setState({ currentTheme });
         }
+      }
+    );
+
+    navigator.geolocation.watchPosition(
+      position => {
+        this.setState({ currentPosition: position.coords }, () => {
+          if (!this.state.positionChecked) {
+            checkPosition(
+              this.state.currentPosition,
+              region => {
+                this.setState({ initialRegion: region });
+              }
+            );
+            this.setState({ positionChecked: true });
+          }
+        });
       }
     );
   }
@@ -132,8 +155,11 @@ export default class EthnicGroceryStores extends Component {
           onSubmitAddStore={this.onSubmitAddStore} />;
         break;
 
+      case 'Home':
       default:
         sceneToRender = <App {...this.state} navigator={navigator}
+          setInitialRegion={this.setInitialRegion}
+          onPositionChecked={this.onPositionChecked}
           onOpenStore={this.onOpenStore}
           onChangeFilter={this.changeFilter}
           onSignIn={this.handleSignIn}

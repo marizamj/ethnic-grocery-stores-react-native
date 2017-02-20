@@ -9,7 +9,7 @@ export default class Menu extends Component {
       title: 'Add store',
       icon: 'ios-add-circle-outline',
       onPress: this.props.onAddStore,
-      needsAuth: false,
+      needsAuth: true,
     },
     {
       title: 'About',
