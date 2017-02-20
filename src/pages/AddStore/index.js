@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TextInput, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Header from '../Header';
-import AddStoreTypes from './AddStore/AddStoreTypes';
+import Header from '../../globalComponents/Header';
+import AddStoreTypes from './AddStoreTypes';
+import getStyles from '../../styles/styles';
+import getHeaderStyles from '../../styles/HeaderStyles';
+import getAddStoreStyles from '../../styles/AddStoreStyles';
 
 const fields = [
   { title: 'Title', placeholder: 'title (required)', keyboardType: 'default' },
@@ -44,7 +47,7 @@ export default class AddStore extends Component {
     if (requiredFields) {
       this.props.onSubmitAddStore(form);
       this.props.navigator.push('Home');
-      
+
     } else {
       this.setState({
         message: 'At least title, address and type should be filled. Please, try again.'
@@ -55,25 +58,27 @@ export default class AddStore extends Component {
   };
 
   render() {
-    const styles = StyleSheet.create(this.props.styles);
     const { currentTheme, navigator, storeTypes } = this.props;
+    const styles = getStyles(currentTheme);
+    const headerStyles = getHeaderStyles(currentTheme);
+    const addStoreStyles = getAddStoreStyles(currentTheme);
 
-    return <View style={[ styles.flexOne, styles.primaryBackground ]}>
-      <Header currentTheme={currentTheme} styles={this.props.styles}>
-        <TouchableOpacity style={styles.headerIconContainer}
+    return <View style={styles.pageContainer}>
+      <Header currentTheme={currentTheme}>
+        <TouchableOpacity style={headerStyles.iconContainer}
           onPress={() => this.props.navigator.pop()}>
-          <Icon style={styles.headerIcon} name="ios-arrow-back"  />
+          <Icon style={headerStyles.icon} name="ios-arrow-back"  />
         </TouchableOpacity>
-        <Text style={styles.headerText}>
+        <Text style={headerStyles.text}>
           Add new store
         </Text>
-        <View style={styles.iconPlaceholder} />
+        <View style={headerStyles.iconPlaceholder} />
       </Header>
 
       <ScrollView ref={ref => this.ScrollView = ref}>
       {
         this.state.message ?
-          <Text style={styles.addStoreMessage}>{this.state.message}</Text>
+          <Text style={addStoreStyles.message}>{this.state.message}</Text>
           : null
       }
 
@@ -85,14 +90,14 @@ export default class AddStore extends Component {
             case 'Type':
               elementToRender = <AddStoreTypes key={field.title}
                 checkType={this.checkType} checkedTypes={this.state.checkedTypes}
-                storeTypes={storeTypes} styles={this.props.styles} />
+                storeTypes={storeTypes} currentTheme={currentTheme} />
               break;
 
             default:
-              elementToRender = <View style={styles.addStoreField} key={field.title}
+              elementToRender = <View style={addStoreStyles.field} key={field.title}
                 ref={ref => this[field.title] = ref}>
-                <Text style={styles.addStoreText}>{field.title}</Text>
-                <TextInput style={styles.addStoreInput}
+                <Text style={addStoreStyles.text}>{field.title}</Text>
+                <TextInput style={addStoreStyles.input}
                   placeholder={field.placeholder} placeholderTextColor="#999999"
                   keyboardType={field.keyboardType} returnKeyType='done'
                   keyboardAppearance='dark'
@@ -109,7 +114,7 @@ export default class AddStore extends Component {
         })
       }
 
-        <TouchableOpacity style={[styles.btn, styles.addStoreSubmit]}
+        <TouchableOpacity style={[styles.btn, addStoreStyles.submit]}
           onPress={ () => this.handleSubmit() }>
           <Text style={styles.btnText}>Submit</Text>
         </TouchableOpacity>

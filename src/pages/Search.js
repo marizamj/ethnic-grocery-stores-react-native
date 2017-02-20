@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TextInput, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Header from '../Header';
+import Header from '../globalComponents/Header';
+import getStyles from '../styles/styles';
+import getSearchStyles from '../styles/SearchStyles';
+import getHeaderStyles from '../styles/HeaderStyles';
 
 const fields = [
   {
@@ -57,23 +60,25 @@ export default class Search extends Component {
   };
 
   render() {
-    const styles = StyleSheet.create(this.props.styles);
     const { currentTheme, navigator } = this.props;
+    const styles = getStyles(currentTheme);
+    const searchStyles = getSearchStyles(currentTheme);
+    const headerStyles = getHeaderStyles(currentTheme);
 
-    return <View style={[ styles.flexOne, styles.primaryBackground ]}>
-      <Header currentTheme={currentTheme} styles={this.props.styles}>
-        <TouchableOpacity style={styles.headerIconContainer}
+    return <View style={styles.pageContainer}>
+      <Header currentTheme={currentTheme}>
+        <TouchableOpacity style={headerStyles.iconContainer}
           onPress={() => navigator.pop()}>
-          <Icon style={styles.headerIcon} name="ios-arrow-back"  />
+          <Icon style={headerStyles.icon} name="ios-arrow-back"  />
         </TouchableOpacity>
-        <Text style={styles.headerText}>
+        <Text style={headerStyles.text}>
           Search
         </Text>
-        <View style={styles.iconPlaceholder} />
+        <View style={headerStyles.iconPlaceholder} />
       </Header>
 
-      <View style={styles.searchInputContainer}>
-        <TextInput style={styles.searchInput} placeholder="Search.."
+      <View style={searchStyles.searchInputContainer}>
+        <TextInput style={searchStyles.searchInput} placeholder="Search.."
           placeholderTextColor="#999999" autoFocus={true}
           onChangeText={this.handleTextChange} />
       </View>
@@ -84,18 +89,20 @@ export default class Search extends Component {
 
           return results.length > 0 ?
             <View key={field.state}>
-              <Text style={styles.searchHeader}>{field.caption}</Text>
+              <Text style={searchStyles.searchHeader}>{field.caption}</Text>
               {
                 results.map((store, i) =>
                   <TouchableOpacity key={store.id} style={
-                    i === 0 ? [ styles.searchStore, styles.firstItem ] : styles.searchStore
+                    i === 0 ?
+                      [ searchStyles.searchStore, searchStyles.firstItem ]
+                      : searchStyles.searchStore
                   } onPress={ () => this.props.onOpenStore(store, navigator) }>
-                    <Text style={styles.searchStoreTitle}>
-                      {store.title} <Text style={styles.searchStoreType}>
+                    <Text style={searchStyles.searchStoreTitle}>
+                      {store.title} <Text style={searchStyles.searchStoreType}>
                         {store.type}
                       </Text>
                     </Text>
-                    <Text style={styles.searchStoreAddress}>{store.address}</Text>
+                    <Text style={searchStyles.searchStoreAddress}>{store.address}</Text>
                   </TouchableOpacity>)
               }
             </View>

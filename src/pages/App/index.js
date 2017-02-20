@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Animated, Easing, TouchableOpacity } from 'react-native';
+import { View, Text, Animated, Easing, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Header from '../Header';
-import Menu from '../Menu';
-import MapView from '../MapView';
-import Filters from '../Filters';
+import Header from '../../globalComponents/Header';
+import Menu from './Menu';
+import MapView from './MapView';
+import Filters from './Filters';
+import getStyles from '../../styles/styles';
+import getHeaderStyles from '../../styles/HeaderStyles';
 
 export default class App extends Component {
   state = {
@@ -46,7 +48,6 @@ export default class App extends Component {
   };
 
   render() {
-    const styles = StyleSheet.create(this.props.styles);
     const { menu, showFilters } = this.state;
     const {
       currentTheme,
@@ -59,6 +60,9 @@ export default class App extends Component {
       filter,
       user
     } = this.props;
+
+    const styles = getStyles(currentTheme);
+    const headerStyles = getHeaderStyles(currentTheme);
 
     const menuMarginLeft = this.animatedMenuValue.interpolate({
       inputRange: [ 0, 1 ],
@@ -75,30 +79,29 @@ export default class App extends Component {
       outputRange: [ 0, 250 ]
     });
 
-    return <View style={styles.flexOne}>
-      <Header currentTheme={currentTheme} styles={this.props.styles}>
-        <TouchableOpacity style={styles.headerIconContainer}
+    return <View style={{ flex: 1 }}>
+      <Header currentTheme={currentTheme}>
+        <TouchableOpacity style={headerStyles.iconContainer}
           onPress={() => this.setState({ menu: !menu })}>
-          <Icon style={styles.headerIcon} name="ios-menu" />
+          <Icon style={headerStyles.icon} name="ios-menu" />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={ () => this.setState({ showFilters: !showFilters }) }>
-          <Text style={styles.headerText}>
+          <Text style={headerStyles.text}>
             { filter + ' ' }
-            <Icon style={styles.headerDropdownIcon} name="ios-arrow-down" />
+            <Icon style={headerStyles.dropdownIcon} name="ios-arrow-down" />
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.headerIconContainer}
+        <TouchableOpacity style={headerStyles.iconContainer}
           onPress={() => navigator.push({ title: 'Search' })}>
-          <Icon style={styles.headerIcon} name="ios-search" />
+          <Icon style={headerStyles.icon} name="ios-search" />
         </TouchableOpacity>
       </Header>
 
-      <View style={[ styles.flexOne, styles.flexRow ]}>
+      <View style={{ flex: 1, flexDirection: 'row' }}>
 
-        <MapView stores={storesToShow} styles={this.props.styles}
-          currentTheme={currentTheme} currentPosition={currentPosition}
-          initialRegion={initialRegion}
+        <MapView stores={storesToShow} currentTheme={currentTheme}
+          currentPosition={currentPosition} initialRegion={initialRegion}
           onOpenStore={ store => this.props.onOpenStore(store, navigator) } />
 
         {
@@ -109,7 +112,7 @@ export default class App extends Component {
         }
 
         <Animated.View style={[ { marginLeft: menuMarginLeft }, styles.menu ]}>
-          <Menu styles={this.props.styles} user={user}
+          <Menu currentTheme={currentTheme} user={user}
             onAbout={ () => this.closeMenuAndPushRoute('About') }
             onSettings={ () => this.closeMenuAndPushRoute('Settings') }
             onSignIn={ this.props.onSignIn }
@@ -120,7 +123,7 @@ export default class App extends Component {
       </View>
 
       <Animated.View style={[{ height: filtersHeight }, styles.filters]}>
-        <Filters styles={this.props.styles} storeTypes={storeTypes}
+        <Filters currentTheme={currentTheme} storeTypes={storeTypes}
           filter={filter} onCloseFilter={ () =>
             this.setState({ showFilters: false })
           } onChangeFilter={ filter => {

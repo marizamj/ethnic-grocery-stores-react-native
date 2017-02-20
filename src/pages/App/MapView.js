@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, AlertIOS } from 'react-native';
+import { AlertIOS } from 'react-native';
 import NativeMap from 'react-native-maps';
-import { SvgMarker, AnimatedUserLocation } from './SvgMarker';
-import themes from './styles/themes';
-import { isInAmsterdam, amsterdamRegion } from './lib/geolocationLib';
+import { SvgMarker, AnimatedUserLocation } from '../../globalComponents/SvgMarker';
+import themes from '../../themes/themes';
+import { isInAmsterdam, amsterdamRegion } from '../../lib/geolocationLib';
 
 export default class MapView extends Component {
   state = {
@@ -45,11 +45,10 @@ export default class MapView extends Component {
   };
 
   render() {
-    const styles = StyleSheet.create(this.props.styles);
     const { stores, currentTheme } = this.props;
     const { currentPosition, initialRegion } = this.state;
 
-    return <NativeMap style={styles.flexOne}
+    return <NativeMap style={{ flex: 1 }}
       initialRegion={initialRegion}>
 
       {

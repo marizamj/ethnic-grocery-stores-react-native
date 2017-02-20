@@ -1,39 +1,45 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Header from '../Header';
-import themes from '../styles/themes';
-import pictures from '../styles/pictures';
+import Header from '../globalComponents/Header';
+import themes from '../themes/themes';
+import pictures from '../themes/pictures';
+import getStyles from '../styles/styles';
+import getHeaderStyles from '../styles/HeaderStyles';
+import getSettingsStyles from '../styles/SettingsStyles';
 
 export default class Search extends Component {
   render() {
-    const styles = StyleSheet.create(this.props.styles);
+    const { currentTheme, navigator } = this.props;
+    const styles = getStyles(currentTheme);
+    const headerStyles = getHeaderStyles(currentTheme);
+    const settingsStyles = getSettingsStyles(currentTheme);
 
-    return <View style={[ styles.flexOne, styles.primaryBackground ]}>
-      <Header currentTheme={this.props.currentTheme} styles={this.props.styles}>
-        <TouchableOpacity style={styles.headerIconContainer}
-          onPress={() => this.props.navigator.pop()}>
-          <Icon style={styles.headerIcon} name="ios-arrow-back"  />
+    return <View style={styles.pageContainer}>
+      <Header currentTheme={currentTheme}>
+        <TouchableOpacity style={headerStyles.iconContainer}
+          onPress={() => navigator.pop()}>
+          <Icon style={headerStyles.icon} name="ios-arrow-back"  />
         </TouchableOpacity>
-        <Text style={styles.headerText}>
+        <Text style={headerStyles.text}>
           Settings
         </Text>
-        <View style={styles.iconPlaceholder} />
+        <View style={headerStyles.iconPlaceholder} />
       </Header>
 
       <ScrollView>
-        <Text style={styles.settingsTitle}>Pick a theme</Text>
+        <Text style={settingsStyles.title}>Pick a theme</Text>
         {
           Object.keys(themes).map((key, i) => <TouchableOpacity key={key}
-            activeOpacity={1} style={styles.settingsItem}
+            activeOpacity={1} style={settingsStyles.item}
             onPress={() => { this.props.setTheme(key) }}>
-            <Image style={styles.settingsItemImage} source={pictures[key]}>
+            <Image style={settingsStyles.itemImage} source={pictures[key]}>
               <View style={[
-                styles.settingsItemTextContainer,
+                settingsStyles.itemTextContainer,
                 { backgroundColor: themes[key].primaryDark }
               ]}>
                 <Text style={[
-                  styles.settingsItemText,
+                  settingsStyles.itemText,
                   { color: themes[key].primaryLight }
                 ]}>{themes[key].title}</Text>
               </View>

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Header from '../Header';
-import StoreMapView from './Store/StoreMapView';
-import StoreHours from './Store/StoreHours';
-import OpenLink from '../OpenLink';
+import Header from '../../globalComponents/Header';
+import OpenLink from '../../globalComponents/OpenLink';
+import StoreMapView from './StoreMapView';
+import StoreHours from './StoreHours';
+import getStyles from '../../styles/styles';
+import getHeaderStyles from '../../styles/HeaderStyles';
+import getStoreStyles from '../../styles/StoreStyles';
 
 const fields = [
   'Mapview',
@@ -32,21 +35,23 @@ export default class Store extends Component {
   render() {
     const { store, currentTheme, navigator } = this.props;
     const { lat, lng } = store.latLng;
-    const styles = StyleSheet.create(this.props.styles);
+    const styles = getStyles(currentTheme);
+    const headerStyles = getHeaderStyles(currentTheme);
+    const storeStyles = getStoreStyles(currentTheme);
 
-    return <View style={[ styles.flexOne, styles.primaryBackground ]}>
-      <Header currentTheme={currentTheme} styles={this.props.styles}>
-        <TouchableOpacity style={styles.headerIconContainer}
-          onPress={() => this.props.navigator.pop()}>
-          <Icon style={styles.headerIcon} name="ios-arrow-back"  />
+    return <View style={styles.pageContainer}>
+      <Header currentTheme={currentTheme}>
+        <TouchableOpacity style={headerStyles.iconContainer}
+          onPress={() => navigator.pop()}>
+          <Icon style={headerStyles.icon} name="ios-arrow-back"  />
         </TouchableOpacity>
-        <Text style={styles.headerText}>
+        <Text style={headerStyles.text}>
           { store.title }
         </Text>
-        <View style={styles.iconPlaceholder} />
+        <View style={headerStyles.iconPlaceholder} />
       </Header>
 
-      <Text style={styles.storeType}>{store.type}</Text>
+      <Text style={storeStyles.type}>{store.type}</Text>
       <ScrollView>
 
       {
@@ -56,18 +61,19 @@ export default class Store extends Component {
           switch (field) {
             case 'Mapview':
               elemToRender = <StoreMapView key={field} store={store}
-                currentTheme={currentTheme} styles={this.props.styles} />;
+                currentTheme={currentTheme} />;
               break;
 
             case 'QuickContacts':
-              elemToRender = <View key={field} style={styles.storeQuickContacts}>
+              elemToRender = <View key={field} style={storeStyles.quickContacts}>
                 {
                   quickContacts.map(field =>
                     store[field.title] ?
                       <OpenLink key={'quickContacts:' + field.title}
-                        prefix={field.prefix} url={store[field.title]}>
+                        prefix={field.prefix} url={store[field.title]}
+                        currentTheme={currentTheme}>
                         <Icon name={field.icon}
-                          style={styles.storeQuickContactsIcon} />
+                          style={storeStyles.quickContactsIcon} />
                       </OpenLink>
                       : null)
                 }
@@ -76,15 +82,15 @@ export default class Store extends Component {
 
             case 'Hours':
               elemToRender = <StoreHours store={store} key={field}
-                styles={this.props.styles} />;
+                currentTheme={currentTheme} />;
               break;
 
             case 'Address':
             case 'Description':
               elemToRender = store[field.toLowerCase()] ?
                 <View key={field}>
-                  <Text style={styles.storeFieldTitle}>{ field }:</Text>
-                  <Text style={styles.storeFieldText}>
+                  <Text style={storeStyles.fieldTitle}>{ field }:</Text>
+                  <Text style={storeStyles.fieldText}>
                     { store[field.toLowerCase()] }
                   </Text>
                 </View>
@@ -94,10 +100,10 @@ export default class Store extends Component {
             default:
               elemToRender = store[field.toLowerCase()] ?
                 <View key={field}>
-                  <Text style={styles.storeFieldTitle}>{ field }:</Text>
+                  <Text style={storeStyles.fieldTitle}>{ field }:</Text>
                   <OpenLink url={store[field.toLowerCase()]}
                     prefix={prefixes[field.toLowerCase()] || ''}
-                    styles={this.props.styles} />
+                    currentTheme={currentTheme} />
                 </View>
                 : null
           }

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, AppRegistry, Navigator, AsyncStorage, AlertIOS } from 'react-native';
-import App from './src/pages/App';
+import { AppRegistry, Navigator, AsyncStorage, AlertIOS } from 'react-native';
+import App from './src/pages/App/index';
 import About from './src/pages/About';
 import Search from './src/pages/Search';
 import Settings from './src/pages/Settings';
-import Store from './src/pages/Store';
-import AddStore from './src/pages/AddStore';
-import getStyles from './src/styles/styles';
+import Store from './src/pages/Store/index';
+import AddStore from './src/pages/AddStore/index';
 import { pushStoreToFirebase, loadFromJson } from './src/lib/firebaseLib';
 import { signInWithGoogle, signOut } from './src/lib/OAuthLib';
 
@@ -99,24 +98,23 @@ export default class EthnicGroceryStores extends Component {
 
   renderScene = (route, navigator) => {
     const { currentTheme, currentStore, storeTypes, stores } = this.state;
-    const styles = getStyles(currentTheme);
 
     let sceneToRender;
 
     switch (route.title) {
       case 'Search':
-        sceneToRender = <Search styles={styles} navigator={navigator}
+        sceneToRender = <Search navigator={navigator}
           currentTheme={currentTheme} stores={stores}
           onOpenStore={this.onOpenStore} />;
         break;
 
       case 'About':
-        sceneToRender = <About styles={styles} navigator={navigator}
+        sceneToRender = <About navigator={navigator}
           currentTheme={currentTheme} />;
         break;
 
       case 'Settings':
-        sceneToRender = <Settings styles={styles} navigator={navigator}
+        sceneToRender = <Settings navigator={navigator}
           currentTheme={currentTheme} setTheme={ theme => {
             this.setTheme(theme);
             navigator.push({ title: 'Home' });
@@ -124,18 +122,18 @@ export default class EthnicGroceryStores extends Component {
         break;
 
       case 'Store':
-        sceneToRender = <Store styles={styles} navigator={navigator}
+        sceneToRender = <Store navigator={navigator}
           store={currentStore} currentTheme={currentTheme} />;
         break;
 
       case 'AddStore':
-        sceneToRender = <AddStore styles={styles} storeTypes={storeTypes}
+        sceneToRender = <AddStore storeTypes={storeTypes}
           navigator={navigator} currentTheme={currentTheme}
           onSubmitAddStore={this.onSubmitAddStore} />;
         break;
 
       default:
-        sceneToRender = <App {...this.state} navigator={navigator} styles={styles}
+        sceneToRender = <App {...this.state} navigator={navigator}
           onOpenStore={this.onOpenStore}
           onChangeFilter={this.changeFilter}
           onSignIn={this.handleSignIn}

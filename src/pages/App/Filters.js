@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { PickerIOS, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { PickerIOS, View, Text, TouchableOpacity } from 'react-native';
 import { BlurView } from 'react-native-blur';
+import getStyles from '../../styles/styles';
 
 export default class Filters extends Component {
   state = {
@@ -12,7 +13,8 @@ export default class Filters extends Component {
   }
 
   render() {
-    const styles = StyleSheet.create(this.props.styles);
+    const { currentTheme } = this.props;
+    const styles = getStyles(currentTheme);
 
      return <View>
         <View style={styles.filtersHeader}>

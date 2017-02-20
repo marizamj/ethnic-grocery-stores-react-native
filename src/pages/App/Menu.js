@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { Text, View, ScrollView, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import getMenuStyles from '../../styles/MenuStyles';
 
 export default class Menu extends Component {
   menuFields = [
@@ -31,25 +32,24 @@ export default class Menu extends Component {
   ];
 
   render() {
-    const styles = StyleSheet.create(this.props.styles);
-
-    const { user } = this.props;
+    const { currentTheme, user } = this.props;
+    const menuStyles = getMenuStyles(currentTheme);
 
     return <View>
       <ScrollView>
       {
         user ?
-          <Image source={{ uri: user.coverUrl }} style={styles.userCover}>
-            <View style={styles.userContainer}>
-              <Image source={{ uri: user.imageUrl }} style={styles.userImage} />
-              <Text style={styles.userName}>Hola, {user.firstName}</Text>
+          <Image source={{ uri: user.coverUrl }} style={menuStyles.userCover}>
+            <View style={menuStyles.userContainer}>
+              <Image source={{ uri: user.imageUrl }} style={menuStyles.userImage} />
+              <Text style={menuStyles.userName}>Hola, {user.firstName}</Text>
             </View>
           </Image>
           :
           <TouchableOpacity onPress={() => this.props.onSignIn()}>
-            <View style={styles.menuSignIn}>
-              <Icon name="ios-contact-outline" style={styles.menuSignInIcon} />
-              <Text style={styles.menuSignInText}>Sign in</Text>
+            <View style={menuStyles.signIn}>
+              <Icon name="ios-contact-outline" style={menuStyles.signInIcon} />
+              <Text style={menuStyles.signInText}>Sign in</Text>
             </View>
           </TouchableOpacity>
       }
@@ -58,11 +58,9 @@ export default class Menu extends Component {
         this.menuFields.map( field =>
           user || !field.needsAuth ?
             <TouchableOpacity key={field.title}
-              style={styles.menuListItem} onPress={field.onPress}>
-              <View style={[styles.flexRow, styles.flexOne]}>
-                <Icon name={field.icon} style={styles.menuListItemIcon} />
-                <Text style={styles.menuListItemText}>{field.title}</Text>
-              </View>
+              style={menuStyles.listItem} onPress={field.onPress}>
+              <Icon name={field.icon} style={menuStyles.listItemIcon} />
+              <Text style={menuStyles.listItemText}>{field.title}</Text>
             </TouchableOpacity>
           : null )
       }

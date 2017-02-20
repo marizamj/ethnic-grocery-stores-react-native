@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, Linking, TouchableOpacity } from 'react-native';
+import { Text, Linking, TouchableOpacity } from 'react-native';
+import getStyles from '../styles/styles';
 
 export default class OpenLink extends Component {
   static propTypes = {
@@ -22,7 +23,8 @@ export default class OpenLink extends Component {
   };
 
   render() {
-    const styles = StyleSheet.create(this.props.styles);
+    const { currentTheme } = this.props;
+    const styles = getStyles(currentTheme);
 
     return this.props.inline ?
       <Text onPress={this.onUrlPress}>
@@ -34,7 +36,7 @@ export default class OpenLink extends Component {
         this.props.children ?
           this.props.children
           :
-          <Text style={styles.storeFieldText}>
+          <Text style={styles.linkText}>
             { this.props.url }
           </Text>
       }
