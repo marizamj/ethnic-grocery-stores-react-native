@@ -77,7 +77,7 @@ export default class App extends Component {
 
     const menuShadowZIndex = this.animatedMenuValue.interpolate({
       inputRange: [ 0, 1 ],
-      outputRange: [ 0, 1 ]
+      outputRange: [ -1, 1 ]
     });
 
     const filtersHeight = this.animatedFiltersValue.interpolate({
@@ -110,11 +110,11 @@ export default class App extends Component {
           currentPosition={currentPosition} initialRegion={initialRegion}
           onOpenStore={ store => this.props.onOpenStore(store, navigator) } />
 
-          <Animated.View style={[
-              styles.menuShadow,
-              { opacity: menuShadowOpacity, zIndex: menuShadowZIndex }
-            ]}
-            onStartShouldSetResponder={ () => this.setState({ menu: false }) } />
+        <Animated.View style={[
+            styles.menuShadow,
+            { opacity: menuShadowOpacity, zIndex: menuShadowZIndex }
+          ]}
+          onStartShouldSetResponder={ () => this.setState({ menu: false }) } />
 
         <Animated.View style={[ { marginLeft: menuMarginLeft }, styles.menu ]}>
           <Menu currentTheme={currentTheme} user={user}
