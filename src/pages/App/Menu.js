@@ -18,9 +18,9 @@ export default class Menu extends Component {
       needsAuth: false,
     },
     {
-      title: 'Settings',
+      title: 'Themes',
       icon: 'ios-settings-outline',
-      onPress: this.props.onSettings,
+      onPress: this.props.onThemes,
       needsAuth: false,
     },
     {
@@ -42,7 +42,7 @@ export default class Menu extends Component {
           <Image source={{ uri: user.coverUrl }} style={menuStyles.userCover}>
             <View style={menuStyles.userContainer}>
               <Image source={{ uri: user.imageUrl }} style={menuStyles.userImage} />
-              <Text style={menuStyles.userName}>Hola, {user.firstName}</Text>
+              <Text style={menuStyles.userName}>Hi, {user.firstName}</Text>
             </View>
           </Image>
           :

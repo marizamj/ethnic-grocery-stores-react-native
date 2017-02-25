@@ -3,7 +3,7 @@ import { AppRegistry, Navigator, AsyncStorage, AlertIOS } from 'react-native';
 import App from './src/pages/App/index';
 import About from './src/pages/About';
 import Search from './src/pages/Search';
-import Settings from './src/pages/Settings';
+import Themes from './src/pages/Themes';
 import Store from './src/pages/Store/index';
 import AddStore from './src/pages/AddStore/index';
 import { pushStoreToFirebase, loadFromJson } from './src/lib/firebaseLib';
@@ -136,8 +136,8 @@ export default class EthnicGroceryStores extends Component {
           currentTheme={currentTheme} />;
         break;
 
-      case 'Settings':
-        sceneToRender = <Settings navigator={navigator}
+      case 'Themes':
+        sceneToRender = <Themes navigator={navigator}
           currentTheme={currentTheme} setTheme={ theme => {
             this.setTheme(theme);
             navigator.push({ title: 'Home' });

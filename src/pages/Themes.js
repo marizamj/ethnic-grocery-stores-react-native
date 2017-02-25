@@ -6,14 +6,14 @@ import themes from '../themes/themes';
 import pictures from '../themes/pictures';
 import getStyles from '../styles/styles';
 import getHeaderStyles from '../styles/HeaderStyles';
-import getSettingsStyles from '../styles/SettingsStyles';
+import getThemesStyles from '../styles/ThemesStyles';
 
-export default class Search extends Component {
+export default class Themes extends Component {
   render() {
     const { currentTheme, navigator } = this.props;
     const styles = getStyles(currentTheme);
     const headerStyles = getHeaderStyles(currentTheme);
-    const settingsStyles = getSettingsStyles(currentTheme);
+    const settingsStyles = getThemesStyles(currentTheme);
 
     return <View style={styles.pageContainer}>
       <Header currentTheme={currentTheme}>
@@ -22,7 +22,7 @@ export default class Search extends Component {
           <Icon style={headerStyles.icon} name="ios-arrow-back"  />
         </TouchableOpacity>
         <Text style={headerStyles.text}>
-          Settings
+          Themes
         </Text>
         <View style={headerStyles.iconPlaceholder} />
       </Header>

@@ -46,12 +46,12 @@ export default class About extends Component {
         <Text style={styles.p}>
           I created this project while learning how to code.
           It is powered by React Native and uses Firebase to
-          store data. You also can
+          store data. You also can find (and star ★) it on my
           <OpenLink url="https://github.com/marizamj/ethnic-grocery-stores"
           currentTheme={currentTheme}
           inline={true}> <Text style={styles.pLink}>
-          find (and star ★)
-          </Text> </OpenLink>it on my Github page.
+          Github page
+          </Text> </OpenLink>.
         </Text>
         <Text style={styles.p}>
           If you have any comments or suggestions (or even if

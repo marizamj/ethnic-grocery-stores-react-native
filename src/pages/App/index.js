@@ -115,7 +115,7 @@ export default class App extends Component {
         <Animated.View style={[ { marginLeft: menuMarginLeft }, styles.menu ]}>
           <Menu currentTheme={currentTheme} user={user}
             onAbout={ () => this.closeMenuAndPushRoute('About') }
-            onSettings={ () => this.closeMenuAndPushRoute('Settings') }
+            onThemes={ () => this.closeMenuAndPushRoute('Themes') }
             onSignIn={ this.props.onSignIn }
             onSignOut={ this.props.onSignOut }
             onAddStore={ () => this.closeMenuAndPushRoute('AddStore') } />
