@@ -15,6 +15,7 @@ export default function getStyles(theme) {
       width: 250,
       top: 0,
       bottom: 0,
+      zIndex: 2,
     },
 
     menuShadow: {

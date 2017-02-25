@@ -22,7 +22,7 @@ export default class App extends Component {
     const { menu, showFilters } = this.state;
 
     if (nextState.menu !== menu) {
-      this.toggleAnimatedWindow(menu, this.animatedMenuValue, 200);
+      this.toggleAnimatedWindow(menu, this.animatedMenuValue, 400);
       this.toggleAnimatedWindow(menu, this.animatedMenuShadowValue, 200);
     }
 
@@ -75,6 +75,11 @@ export default class App extends Component {
       outputRange: [ 0, 0.3 ]
     });
 
+    const menuShadowZIndex = this.animatedMenuValue.interpolate({
+      inputRange: [ 0, 1 ],
+      outputRange: [ 0, 1 ]
+    });
+
     const filtersHeight = this.animatedFiltersValue.interpolate({
       inputRange: [ 0, 1 ],
       outputRange: [ 0, 250 ]
@@ -105,12 +110,11 @@ export default class App extends Component {
           currentPosition={currentPosition} initialRegion={initialRegion}
           onOpenStore={ store => this.props.onOpenStore(store, navigator) } />
 
-        {
-          menu ?
-            <Animated.View style={[ styles.menuShadow, { opacity: menuShadowOpacity } ]}
-              onStartShouldSetResponder={ () => this.setState({ menu: false }) } />
-            : null
-        }
+          <Animated.View style={[
+              styles.menuShadow,
+              { opacity: menuShadowOpacity, zIndex: menuShadowZIndex }
+            ]}
+            onStartShouldSetResponder={ () => this.setState({ menu: false }) } />
 
         <Animated.View style={[ { marginLeft: menuMarginLeft }, styles.menu ]}>
           <Menu currentTheme={currentTheme} user={user}
