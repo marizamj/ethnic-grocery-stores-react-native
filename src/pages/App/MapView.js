@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TouchableOpacity } from 'react-native';
 import NativeMap from 'react-native-maps';
 import { SvgMarker, AnimatedUserLocation } from '../../globalComponents/SvgMarker';
 import themes from '../../themes/themes';
@@ -31,14 +32,16 @@ export default class MapView extends Component {
             coordinate={{
               latitude: store.latLng.lat,
               longitude: store.latLng.lng,
-            }} onStartShouldSetResponder={ (e) => {
+            }}>
+            <TouchableOpacity activeOpacity={0.7} onPress={ (e) => {
               if (e.nativeEvent.locationY < 50) {
                 this.props.onOpenStore(store);
               }
             }}>
-            <SvgMarker scale={0.3}
-              baseColor={themes[currentTheme].markerFirst}
-              additionalColor={themes[currentTheme].markerSecond} />
+              <SvgMarker scale={0.3}
+                baseColor={themes[currentTheme].markerFirst}
+                additionalColor={themes[currentTheme].markerSecond} />
+            </TouchableOpacity>
           </NativeMap.Marker>
         )
       }
