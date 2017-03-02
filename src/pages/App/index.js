@@ -59,6 +59,7 @@ export default class App extends Component {
       storeTypes,
       stores,
       filter,
+      rotate,
       user
     } = this.props;
 

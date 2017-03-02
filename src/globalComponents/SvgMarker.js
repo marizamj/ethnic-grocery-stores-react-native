@@ -43,17 +43,22 @@ class AnimatedUserLocation extends Component {
   }
 
   render() {
-    const { baseColor, additionalColor } = this.props;
+    const { baseColor, additionalColor, rotate } = this.props;
 
     const scale = this.animatedValue.interpolate({
       inputRange: [ 0, 0.5, 1 ],
       outputRange: [ 1, 1.5, 1 ]
     });
 
-    return <Animated.View style={{ bottom: 10, transform: [{ scale }] }}>
-      <Svg height="20" width="20">
-        <Circle cx="10" cy="10" r="10" fill={additionalColor} />
-        <Circle cx="10" cy="10" r="5" fill={baseColor} />
+    return <Animated.View style={{ bottom: 15, transform: [{ scale }] }}>
+      <Svg height="30" width="30">
+      {
+        rotate >= 0 ?
+          <Polygon points="7,10 23,10 15,0" fill={baseColor} rotate={rotate} origin="15, 15" />
+          : null
+      }
+        <Circle cx="15" cy="15" r="10" fill={additionalColor} />
+        <Circle cx="15" cy="15" r="5" fill={baseColor} />
       </Svg>
     </Animated.View>
   }

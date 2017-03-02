@@ -43,7 +43,7 @@ export default class EthnicGroceryStores extends Component {
       }
     );
 
-    navigator.geolocation.watchPosition(
+    this.watchID = navigator.geolocation.watchPosition(
       position => {
         this.setState({ currentPosition: position.coords }, () => {
           if (!this.state.positionChecked) {
@@ -56,7 +56,9 @@ export default class EthnicGroceryStores extends Component {
             this.setState({ positionChecked: true });
           }
         });
-      }
+      },
+      error => console.log(error),
+      { enableHighAccuracy: true, timeout: 1000 }
     );
   }
 
@@ -66,6 +68,10 @@ export default class EthnicGroceryStores extends Component {
       const { stores, storeTypes } = data;
       this.setState({ stores, storeTypes, storesToShow: stores });
     });
+  }
+
+  componentWillUnmount() {
+    navigator.geolocation.clearWatch(this.watchID);
   }
 
   setTheme = theme => {

@@ -5,7 +5,7 @@ import themes from '../../themes/themes';
 
 export default class MapView extends Component {
   render() {
-    const { stores, currentTheme, initialRegion, currentPosition } = this.props;
+    const { stores, currentTheme, initialRegion, rotate, currentPosition } = this.props;
 
     return <NativeMap style={{ flex: 1 }}
       initialRegion={initialRegion}>
@@ -17,7 +17,8 @@ export default class MapView extends Component {
             longitude: currentPosition.longitude
           }}>
             <AnimatedUserLocation baseColor={themes[currentTheme].markerFirst}
-              additionalColor={themes[currentTheme].markerSecond} />
+              additionalColor={themes[currentTheme].markerSecond}
+              rotate={currentPosition.heading} />
           </NativeMap.Marker>
         : null
       }
